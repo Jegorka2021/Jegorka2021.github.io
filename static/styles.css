@@ -151,20 +151,27 @@ body {
 }
 @media (max-width: 768px) {
   .Form {
-    position: static;
-    transform: none;
+    position: relative;
     left: 0;
     bottom: 0;
+    transform: none;
     margin-bottom: 20px;
+
     flex-direction: column;
+    align-items: stretch;
     gap: 10px;
-    border-radius: 20px;
-    width: 100%;
-    max-width: 90%;
+
+    width: 90%;
+    max-width: 100%;
     padding: 20px;
+    border-radius: 20px;
   }
 
   .trip-btn {
+    width: 100%;
+  }
+
+  .trip-select {
     width: 100%;
   }
 }
