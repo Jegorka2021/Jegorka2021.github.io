@@ -63,6 +63,7 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    border-radius: 60px;
 }
 
 .bgvideo video {
@@ -73,6 +74,7 @@ body {
     left: 0;
     object-fit: cover;
     z-index: 1;
+    border-radius: 60px;
 }
 
 .vidtext {
@@ -98,6 +100,7 @@ body {
     background-color: rgba(0, 0, 0, 0.4);
     /* настраивай степень затемнения */
     z-index: 2;
+    border-radius: 60px;
 }
 
 .Form {
