@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
 
 body {
     font-family: Poppins, serif;
@@ -8,6 +9,31 @@ body {
 .navbar-brand img {
     width: 160px;
     height: auto;
+}
+
+.navbar-nav .nav-link {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 20px; /* расстояние между иконкой и текстом */
+    transition: all 0.3s ease-in-out;
+}
+.navbar-nav .nav-link:hover {
+    color: #0d6efd; /* Bootstrap primary */
+    transform: scale(1.08);
+    text-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+}
+.navbar .bi {
+  color: #fd0d0d; /* Bootstrap-синий */
+  margin-right: 6px;
+  transition: color 0.3s;
+}
+
+.navbar .nav-link:hover .bi {
+  color: #198754; /* Bootstrap-зелёный при наведении */
 }
 .image-wrapper {
   text-align: center;        /* Центрирует изображение */
@@ -30,7 +56,7 @@ body {
     align-items: center;
 }
 .bgvideo video {
-    height: 90vh ;
+    height: 75vh ;
     width: 100% ; 
     position: absolute;
     top: 0;
@@ -38,9 +64,51 @@ body {
     object-fit: cover;
     z-index: 1;
 }
+
 .vidtext {
-    color: rgb(5, 183, 65);
+    position: relative;
     z-index: 2;
+    margin-bottom: 40vh;
+    padding: 50px;
+    max-width: 90%;
+}
+
+.vidtext h1 {
+    font-family: 'Cinzel Decorative', serif;
+    color: rgb(5, 183, 65);
+    font-size: 3rem;
+}
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column; 
+    /* Выравниваем карточки */
+}
+
+.card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Выравниваем карточки */
+}
+/* Цвет иконок по умолчанию */
+footer .bi {
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+/* Цвета при наведении */
+footer .bi-facebook:hover {
+    color: #3b5998;
+}
+
+footer .bi-instagram:hover {
+    color: #e1306c;
+}
+
+footer .bi-whatsapp:hover {
+    color: #25D366;
 }
 
 
