@@ -149,6 +149,25 @@ body {
 .trip-btn:hover {
     background: #038f2e;
 }
+@media (max-width: 768px) {
+  .Form {
+    position: static;
+    transform: none;
+    left: 0;
+    bottom: 0;
+    margin-bottom: 20px;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  .trip-btn {
+    width: 100%;
+  }
+}
 
 .card {
     height: 100%;
