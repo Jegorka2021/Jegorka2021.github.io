@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Fredoka&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@700&display=swap');
 
 body {
-    font-family: Poppins, serif;
+    font-family: Fredoka, serif;
 }
 
 
@@ -12,7 +12,7 @@ body {
 }
 
 .navbar-nav .nav-link {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Fredoka', sans-serif;
     font-size: 1.2rem;
     padding: 10px 20px;
     font-weight: 600;
@@ -74,7 +74,7 @@ body {
 }
 
 .vidtext h1 {
-    font-family: 'Cinzel Decorative', serif;
+    font-family: 'Fredoka', serif;
     color: rgb(5, 183, 65);
     font-size: 3rem;
 }
@@ -110,7 +110,6 @@ footer .bi-instagram:hover {
 footer .bi-whatsapp:hover {
     color: #25D366;
 }
-
 
 
 
