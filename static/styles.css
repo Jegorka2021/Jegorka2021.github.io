@@ -5,24 +5,42 @@ body {
     font-family: Fredoka, serif;
 }
 
+/* Светлая тема по умолчанию */
+#mainNav {
+  background-color: #ffffff;
+  color: #000;
+}
+
+/* Для тёмной темы */
+body.dark-theme #mainNav {
+  background-color: #000000;
+  color: #fff;
+}
+
+body.dark-theme #mainNav a {
+  color: #fff;
+}
 
 .navbar-brand img {
     width: 120px;
     height: auto;
     border-radius: 30px;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
+    box-sizing: border-box;
 }
+
 
 .navbar-nav .nav-link {
     font-family: 'Fredoka', sans-serif;
     font-size: 1.6rem;
-    padding: 40px 40px;
+    padding: 30px;
     font-weight: 600;
     display: flex;
     align-items: center;
     gap: 5px;
     /* расстояние между иконкой и текстом */
     transition: all 0.3s ease-in-out;
+    box-sizing: border-box;
 }
 
 .navbar-nav .nav-link:hover {
@@ -30,6 +48,7 @@ body {
     /* Bootstrap primary */
     transform: scale(1.08);
     text-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+    box-sizing: border-box;
 }
 
 .navbar .bi {
@@ -37,24 +56,34 @@ body {
     /* Bootstrap-синий */
     margin-right: 6px;
     transition: color 0.3s;
+    box-sizing: border-box;
 }
 
 .navbar .nav-link:hover .bi {
     color: #198754;
     /* Bootstrap-зелёный при наведении */
+    box-sizing: border-box;
 }
 
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='red' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* карусель */
 .image-wrapper {
     text-align: center;
     /* Центрирует изображение */
     padding: 20px;
     background-color: #ffffff;
+    box-sizing: border-box;
 }
+
 
 .logo-img {
     width: 800px;
     height: auto;
     border-radius: 10px;
+    box-sizing: border-box;
 
 }
 
@@ -66,6 +95,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     border-radius: 60px;
+    text-align: center;
 }
 
 .bgvideo video {
@@ -90,7 +120,7 @@ body {
 .vidtext h1 {
     font-family: 'Fredoka', serif;
     color: rgb(5, 183, 65);
-    font-size: 3rem;
+    font-size: 3.5rem;
 }
 
 .bgvideo .overlay {
@@ -107,20 +137,18 @@ body {
 
 .Form {
     position: relative;
-    bottom: 15vh;
-    left: -25%;
-    margin-bottom: -25vh;
-    transform: translateX(-50%);
-    z-index: 3;
-    display: flex;
-    gap: 15px;
-    max-width: 600px;
-    width: 90%;
-    background: rgba(255 255 255 / 0.85);
-    padding: 15px 25px;
-    border-radius: 50px;
-    box-shadow: 0 8px 20px rgb(5 183 65 / 0.4);
-    align-items: center;
+  margin: 0 auto;
+  z-index: 3;
+  display: flex;
+  gap: 15px;
+  max-width: 600px;
+  width: 90%;
+  background: rgba(255 255 255 / 0.85);
+  padding: 15px 25px;
+  border-radius: 50px;
+  box-shadow: 0 8px 20px rgb(5 183 65 / 0.4);
+  align-items: center;
+  flex-wrap: wrap; /* если не влезает, перенос */
 }
 
 .trip-select {
@@ -213,4 +241,153 @@ footer .bi-instagram:hover {
 
 footer .bi-whatsapp:hover {
     color: #25D366;
+}
+/* адаптпция */
+@media (max-width: 992px) {
+  .vidtext {
+    padding: 20px;
+    margin-bottom: 25vh;
+    text-align: center;
+  }
+
+  .vidtext h1 {
+    font-size: 2.5rem;
+  }}
+
+  @media (min-width: 993px) {
+  .Form {
+    position: relative;
+    bottom: 15vh;
+    left: -25%;
+    transform: translateX(-50%);
+    margin-bottom: -25vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .vidtext {
+    padding: 10px;
+    margin-bottom: 20vh;
+  }
+
+  .vidtext h1 {
+    font-size: 2rem;
+  }
+  .trip-btn,
+  .trip-select {
+    width: 100%;
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 480px) {
+  .vidtext h1 {
+    font-size: 2rem;
+    padding: 0;
+    text-align: center;
+  }}
+
+  /* .Form {
+    width: 95%;
+    padding: 15px;
+    border-radius: 20px; */
+  /* }
+
+  .trip-select,
+  .trip-btn {
+    font-size: 1.2rem;
+    width: 100%;
+  }
+
+  .trip-btn {
+    padding: 10px 0;
+  }
+
+  .vidtext {
+    padding: 20px;
+    margin-bottom: 30vh;
+  }
+} */
+
+/* Режим тёмной темы */
+
+/* Светлая тема по умолчанию
+body {
+  background-color: #ffffff;
+  color: #000000;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Тёмная тема */
+body.dark-theme {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Переключатель
+.theme-switch {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  z-index: 1000;
+}  */
+  /* Светлая тема по умолчанию */
+body {
+  background-color: #fff;
+  color: #222;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-theme {
+  background-color: #111;
+  color: #eee;
+}
+
+/* Переключатель темы */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+}
+
+.theme-toggle input {
+  display: none;
+}
+
+.theme-toggle label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60px;
+  height: 30px;
+  background: #ddd;
+  border-radius: 50px;
+  position: relative;
+  cursor: pointer;
+  padding: 0 5px;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.theme-toggle label .toggle-ball {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle input:checked + label .toggle-ball {
+  transform: translateX(30px);
+}
+
+.theme-toggle .sun,
+.theme-toggle .moon {
+  z-index: 1;
 }
