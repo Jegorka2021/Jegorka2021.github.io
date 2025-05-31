@@ -35,6 +35,7 @@ body.dark-theme #mainNav a {
   height: auto;
   border-radius: 30px;
   box-sizing: border-box;
+  
 }
 
 .navbar-nav .nav-link {
@@ -47,6 +48,7 @@ body.dark-theme #mainNav a {
   gap: 5px;
   transition: all 0.3s ease-in-out;
   box-sizing: border-box;
+  
 }
 
 .navbar-nav .nav-link:hover {
@@ -121,7 +123,7 @@ body.dark-theme #mainNav a {
                4px 4px 0 #aaa;
 }
 
-/* Форма бронирования */
+/* Форма выбора поездки */
 .Form {
   position: absolute;
   margin-top: 100px;
@@ -168,35 +170,7 @@ body.dark-theme #mainNav a {
   background: #038f2e;
 }
 
-/* Адаптация формы на мобильных */
-@media (max-width: 768px) {
-  .Form {
-    position: absolute;
-    left: 20px;
-    bottom: 30px;
-    margin-bottom: 20px;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-    width: 90%;
-    padding: 20px;
-    border-radius: 20px;
-  }
 
-  .trip-btn,
-  .trip-select {
-    width: 90%;
-  }
-}
-
-/* Видео-текст на планшетах */
-@media (max-width: 992px) {
-  .vidtext {
-    padding: 20px;
-    margin-bottom: 25vh;
-    text-align: center;
-  }
-}
 
 /* Блок с изображениями */
 .image-wrapper {
@@ -284,4 +258,63 @@ footer .bi-instagram:hover {
 
 footer .bi-whatsapp:hover {
   color: #25D366;
+}
+
+/* Карусель */
+.testimonial-section {
+  background: var(--bs-light);
+  color: var(--bs-dark);
+}
+
+body.dark .testimonial-section {
+  background: #1c1c1c;
+  color: #f1f1f1;
+}
+
+.carousel .blockquote {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.carousel-inner {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+body.dark .carousel-inner {
+  background-color: rgba(30, 30, 30, 0.9);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: 100% 100%;
+}
+
+/* Адаптация формы на мобильных */
+@media (max-width: 768px) {
+  .Form {
+    position: absolute;
+    left: 20px;
+    bottom: 30px;
+    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: 90%;
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .trip-btn,
+  .trip-select {
+    width: 90%;
+  }
+}
+
+/* Видео-текст на планшетах */
+@media (max-width: 992px) {
+  .vidtext {
+    padding: 20px;
+    margin-bottom: 25vh;
+    text-align: center;
+  }
 }
