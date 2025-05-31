@@ -78,7 +78,90 @@
     </div>
   </div>
 </section>
-</section>
+
+<div class="Details">
+        <ul>
+            <li class="nav-itm"><a href="#overview">Overview</a></li>
+            <li class="nav-itm"><a href="#details">Details</a></li>
+
+        </ul>
+
+    </div>
+
+    <section class="content-section">
+        <div class="container-row">
+            <!-- Левая колонка: текст -->
+            <div class="left-column">
+                <h2 id="overview">About</h2>
+                <p>Embark on an unforgettable journey through the heart of Southern Moravia with our exclusive private tour. Explore the picturesque towns of Mikulov and Lednice, each offering a unique blend of history, architecture, and natural beauty.
+Start your day in Mikulov, a charming town nestled at the foot of the Pálava Hills. Next, immerse yourself in the breathtaking beauty of Lednice, home to the magnificent Lednice Palace and its expansive gardens, a UNESCO World Heritage site. 
+Finally, indulge your senses with a visit to the renowned Jaroslav Springer Winery. This family-owned estate offers an intimate wine tasting experience, where you’ll savor some of the finest local wines. </p>
+                <p>This private tour is a perfect blend of culture, history, and exceptional wine, offering a personalized experience that you won’t forget. Join us for a day of exploration, discovery, and indulgence in the heart of Moravia!</p>
+                <p>Book your tour today and let us guide you through the best of Southern Moravia!✨</p>
+                
+
+                <h3 id="details">What's Included</h3>
+                <ul>
+                    <li>Private transportation</li>
+                    <li>Tour guide</li>
+                    <li>Entry tickets</li>
+                    <li>Air-conditioned vehicle</li>
+                    <li>WiFi on board</li>
+                    <li>Snacks</li>
+                    <li>Parking Fees</li>
+                    <li>The tour includes a lunch break; however, meals are not included in the tour price.</li>
+                </ul>
+            </div>
+
+            <!-- Правая колонка: форма/бронирование -->
+             
+            <div class="right-column">
+                <div class="booking-box">
+                    <h3>From €170</h3>
+                    <form action="https://formspree.io/f/xeokjnko" method="POST">
+                        <div class="mb-3">
+                            <label for="firstName" class="form-label">First Name:</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="lastName" class="form-label">Last Name:</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number:</label>
+                            <input type="tel" class="form-control" placeholder="+420 123 456 789" id="phone" name="phone" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Select Date:</label>
+                            <input type="date" class="form-control" id="date" name="date" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="people" class="form-label">Number of People:</label>
+                            <input type="number" class="form-control" id="people" name="people" min="1" value="2"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="route" class="form-label">Prague to Moravia</label>
+                            <input type="hidden" class="form-control" id="route" name="Prague to Moravia" readonly />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mt-3">Book Now</button>
+                    </form>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 
