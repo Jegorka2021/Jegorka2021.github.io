@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const switchCheckbox = document.getElementById('theme-switch');
+  const switchCheckbox = document.getElementById('theme-switch'); // используем только один ID!
+  const nav = document.getElementById('mainNav');
 
   if (!switchCheckbox) {
     console.warn('⚠️ Theme switch checkbox not found');
@@ -9,8 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   function applyTheme(theme) {
-    document.body.classList.toggle('dark-theme', theme === 'dark');
-    switchCheckbox.checked = (theme === 'dark');
+    const isDark = theme === 'dark';
+
+    document.body.classList.toggle('dark-theme', isDark);
+    switchCheckbox.checked = isDark;
+
+    if (nav) {
+      nav.classList.remove('navbar-light', 'bg-light', 'navbar-dark', 'bg-dark');
+      nav.classList.add(isDark ? 'navbar-dark' : 'navbar-light');
+      nav.classList.add(isDark ? 'bg-dark' : 'bg-light');
+    }
   }
 
   const savedTheme = localStorage.getItem('theme');
@@ -22,23 +31,4 @@ document.addEventListener('DOMContentLoaded', () => {
     applyTheme(newTheme);
     localStorage.setItem('theme', newTheme);
   });
-});
-
-/* бургер */
-
-const toggle = document.getElementById('themeToggle');
-const nav = document.getElementById('mainNav');
-
-toggle.addEventListener('change', () => {
-  if (toggle.checked) {
-    document.body.classList.add('dark-theme');
-    localStorage.setItem('theme', 'dark');
-    nav.classList.remove('navbar-light', 'bg-light');
-    nav.classList.add('navbar-dark', 'bg-dark');
-  } else {
-    document.body.classList.remove('dark-theme');
-    localStorage.setItem('theme', 'light');
-    nav.classList.remove('navbar-dark', 'bg-dark');
-    nav.classList.add('navbar-light', 'bg-light');
-  }
 });
