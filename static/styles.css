@@ -16,9 +16,9 @@ body.dark-theme {
 
 /* Навигация */
 #mainNav {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255);
   color: #000;
-  border-radius: 60px;
+  /* border-radius: 60px; */
 }
 
 body.dark-theme #mainNav {
@@ -80,7 +80,7 @@ body.dark-theme #mainNav a {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border-radius: 60px;
+  /* border-radius: 60px; */
 }
 
 .bgvideo video {
@@ -91,7 +91,7 @@ body.dark-theme #mainNav a {
   left: 0;
   object-fit: cover;
   z-index: 1;
-  border-radius: 60px;
+  /* border-radius: 60px; */
 }
 
 .bgvideo .overlay {
@@ -100,9 +100,9 @@ body.dark-theme #mainNav a {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgb(255, 255, 255);
   z-index: 2;
-  border-radius: 60px;
+  /* border-radius: 60px; */
 }
 
 .vidtext {
