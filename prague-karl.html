@@ -4,250 +4,345 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Czech it out</title>
-
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-    <link rel="manifest" href="site.webmanifest" />
-
-    <!-- Styles -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" />
+    <title>Karlštejn Castle & Pilsen Tour</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="static/styles.css" />
-    <link rel="stylesheet" href="static/theme-toggle.css" />
-    <link rel="stylesheet" href="styles(P-K).css">
+    <style>
+        .hero-section {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/72/78/be.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-align: center;
+            padding: 10rem;
+            margin-top: 6rem;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .tour-section {
+            padding: 5rem 0;
+            background: linear-gradient(45deg, #f8f9fa, #ffffff);
+        }
+
+        .tour-card {
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .tour-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .tour-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .tour-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .tour-card-body {
+            padding: 2rem;
+        }
+
+        .tour-card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .tour-card-text {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .price-tag {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .booking-form {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+            margin-top: 3rem;
+        }
+
+        .form-control {
+            border: 2px solid #eee;
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(5, 183, 65, 0.1);
+        }
+
+        .btn-book {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-book:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .included-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .included-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .included-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .included-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 50vh;
+            }
+
+            .booking-form {
+                padding: 2rem;
+            }
+
+            .included-items {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Theme Toggle -->
-    <div class="theme-toggle">
-        <input type="checkbox" id="theme-switch" />
-        <label for="theme-switch">
-            <span class="sun">☀️</span>
-            <span class="moon">🌙</span>
-            <div class="toggle-ball"></div>
-        </label>
-    </div>
-
-    <!-- Navbar -->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">
-                    <img src="static/images/руор-removebg-preview.jpg" alt="Czech it out logo"
-                        style="margin-right: 50px" />
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">
-                                Home <i class="bi bi-house-door-fill"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="index2.html">
-                                Tours <i class="bi bi-map-fill"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="static/images/chat.png" alt="Czech it out logo" height="40" class="me-3" />
+                <span>Czech it out</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/"><i class="bi bi-house"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact"><i class="bi bi-envelope"></i> Contact</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
-    </header>
-
-    <section>
-        <div class="Title">
-            <h1>Karlštejn castle & Pilsen: Private Guided Day Trip from Prague</h1>
         </div>
-        <div class="imagePK">
-            <div class="images-row">
-                <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/b6/5e/d0.jpg"
-                    alt="Main image">
+    </nav>
 
-                <div class="Title2">
-                    <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/b6/62/d4.jpg"
-                        alt="Side image 1">
-                    <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/50/c1/f5.jpg"
-                        alt="Side image 2">
-                </div>
-            </div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Karlštejn Castle & Pilsen Tour</h1>
+            <p>Experience the magic of medieval Czech history and world-famous beer in one unforgettable day</p>
         </div>
     </section>
 
-    <div class="Details">
-        <ul>
-            <li class="nav-itm"><a href="#overview">Overview</a></li>
-            <li class="nav-itm"><a href="#details">Details</a></li>
-
-        </ul>
-
-    </div>
-
-    <section class="content-section">
-        <div class="container-row">
-            <!-- Левая колонка: текст -->
-            <div class="left-column">
-                <h2 id="overview">About</h2>
-                <p>Enjoy a seamless and enriching journey with door-to-door service and the expertise of a personal
-                    professional guide, who will accompany you throughout your adventure, ensuring a stress-free and
-                    insightful experience.</p>
-                <p>Your journey begins at the breathtaking UNESCO Karlštejn Castle, where you'll take in stunning views
-                    of the charming village and surrounding nature.</p>
-                <p>Next, travel comfortably to Pilsen, the birthplace of the world-famous Pilsner Urquell beer. Here,
-                    you'll taste fresh, unfiltered beer straight from the source—a must for beer enthusiasts.</p>
-                <p>Explore Pilsen’s rich history through iconic landmarks like the majestic St. Bartholomew’s Cathedral,
-                    located in the heart of the lively Namesti Republiky square.</p>
-                <p>Savor authentic Czech cuisine or treat yourself to award-winning pizza at one of the country’s best
-                    pizzerias.</p>
-                <p>Book now and let us craft your dream getaway! ✨</p>
-
-                <h3 id="details">What's Included</h3>
-                <ul>
-                    <li>Private transportation</li>
-                    <li>Tour guide</li>
-                    <li>Entry tickets</li>
-                    <li>Air-conditioned vehicle</li>
-                    <li>WiFi on board</li>
-                    <li>Snacks</li>
-                    <li>Parking Fees</li>
-                    <li>The tour includes a lunch break; however, meals are not included in the tour price.</li>
-                </ul>
-            </div>
-
-            <!-- Правая колонка: форма/бронирование -->
-             
-            <div class="right-column">
-                <div class="booking-box">
-                    <h3>From €170</h3>
-                    <form action="https://formspree.io/f/xeokjnko" method="POST">
-                        <div class="mb-3">
-                            <label for="firstName" class="form-label">First Name:</label>
-                            <input type="text" class="form-control" id="firstName" name="firstName" required>
+    <!-- Tour Details Section -->
+    <section class="tour-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <div class="tour-card">
+                        <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/72/78/be.jpg"
+                            alt="Karlštejn Castle" />
+                        <div class="tour-card-body">
+                            <h2 class="tour-card-title">Tour Highlights</h2>
+                            <p class="tour-card-text">
+                                Embark on a journey through time as you explore the magnificent Karlštejn Castle, a
+                                14th-century Gothic
+                                masterpiece built by Charles IV. Marvel at the stunning architecture, royal chambers,
+                                and the famous
+                                Chapel of the Holy Cross. Then, visit the birthplace of Pilsner beer in Pilsen, where
+                                you'll tour the
+                                historic brewery and enjoy a refreshing tasting session.
+                            </p>
+                            <div class="included-items">
+                                <div class="included-item">
+                                    <i class="bi bi-clock"></i>
+                                    <span>8-hour guided tour</span>
+                                </div>
+                                <div class="included-item">
+                                    <i class="bi bi-ticket"></i>
+                                    <span>Skip-the-line castle entry</span>
+                                </div>
+                                <div class="included-item">
+                                    <i class="bi bi-cup-hot"></i>
+                                    <span>Beer tasting in Pilsen</span>
+                                </div>
+                                <div class="included-item">
+                                    <i class="bi bi-car-front"></i>
+                                    <span>Private transportation</span>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="mb-3">
-                            <label for="lastName" class="form-label">Last Name:</label>
-                            <input type="text" class="form-control" id="lastName" name="lastName" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="phone" class="form-label">Phone Number:</label>
-                            <input type="tel" ... placeholder="+420 123 456 789" />
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="date" class="form-label">Select Date:</label>
-                            <input type="date" class="form-control" id="date" name="date" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="people" class="form-label">Number of People:</label>
-                            <input type="number" class="form-control" id="people" name="people" min="1" value="2"
-                                required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="route" class="form-label">Prague to Karlštejn</label>
-                            <input type="hidden" class="form-control" id="route" name="Prague to Karlštejn" readonly />
-                        </div>
-
-                        <button type="submit" class="btn btn-primary mt-3">Book Now</button>
-                    </form>
-                    
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="booking-form">
+                        <h3 class="mb-4">Book Your Tour</h3>
+                        <form>
+                            <div class="mb-3">
+                                <label for="date" class="form-label">Select Date</label>
+                                <input type="date" class="form-control" id="date" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="guests" class="form-label">Number of Guests</label>
+                                <select class="form-control" id="guests" required>
+                                    <option value="">Select number of guests</option>
+                                    <option value="1">1 Guest</option>
+                                    <option value="2">2 Guests</option>
+                                    <option value="3">3 Guests</option>
+                                    <option value="4">4 Guests</option>
+                                    <option value="5">5 Guests</option>
+                                    <option value="6">6 Guests</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" class="form-control" id="name" required />
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" required />
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <span class="price-tag">From $119.17</span>
+                                <button type="submit" class="btn btn-book">Book Now</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-
-
-
-
-
-
-
-    <!-- Модальное окно html -->
-    <div id="modal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modal-img">
-    </div>
-    <footer class="bg-dark text-light py-4 mt-5">
-        <div class="container text-center">
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <h5>Contact</h5>
-                    <p>Email: info@czechitout.com<br>Phone: +420 123 456 789</p>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <h5>Follow us</h5>
-                    <a href="#" class="text-decoration-none"><i class="bi bi-facebook fs-4"></i></a>
-                    <a href="#" class="text-decoration-none"><i class="bi bi-instagram fs-4"></i></a>
-                    <a href="#" class="text-decoration-none"><i class="bi bi-whatsapp fs-4"></i></a>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <h5>Quick links</h5>
-                    <a href="index.html" class="text-light d-block">Home</a>
-                    <a href="index2.html" class="text-light d-block">Tours</a>
-                </div>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark text-light" id="contact">
+      <div class="container text-center">
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6">
+            <h5 class="fw-bold mb-4">Contact Us</h5>
+            <div class="mb-2">
+              <i class="bi bi-envelope-fill text-primary me-2"></i>
+              info@czechitout.com
             </div>
-            <hr class="border-light">
-            <p class="mb-0">&copy; 2025 Czech it out. All rights reserved.</p>
+            <div>
+              <i class="bi bi-telephone-fill text-primary me-2"></i>
+              +420 123 456 789
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h5 class="fw-bold mb-4">Follow Us</h5>
+            <a href="#" class="text-light fs-4 mx-2 text-decoration-none">
+              <i class="bi bi-facebook"></i>
+            </a>
+            <a href="#" class="text-light fs-4 mx-2 text-decoration-none">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="#" class="text-light fs-4 mx-2 text-decoration-none">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h5 class="fw-bold mb-4">Quick Links</h5>
+            <a href="/" class="text-light d-block mb-2 text-decoration-none">
+              <i class="bi bi-chevron-right me-2"></i>Home
+            </a>
+            <a href="index2.html" class="text-light d-block text-decoration-none">
+              <i class="bi bi-chevron-right me-2"></i>Tours
+            </a>
+          </div>
         </div>
+        <hr class="border-light my-4" />
+        <p class="mb-0">&copy; 2025 Czech it out. All rights reserved.</p>
+      </div>
     </footer>
 
 
-    <!-- Scripts -->
-    <script src="static/theme-toggle.js" defer></script>
-    <script src="static/Form.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"
-        defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            AOS.init({ duration: 1000, once: true });
-        });
-    </script>
-    <!-- Модальное окно JavaScript -->
-    <script>
-        const modal = document.getElementById("modal");
-        const modalImg = document.getElementById("modal-img");
-        const images = document.querySelectorAll(".images-row img");
-        const closeBtn = document.querySelector(".close");
-
-        images.forEach(img => {
-            img.addEventListener("click", () => {
-                modal.style.display = "block";
-                modalImg.src = img.src;
-            });
-        });
-
-        closeBtn.onclick = function () {
-            modal.style.display = "none";
-        };
-
-        window.onclick = function (event) {
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        };
-    </script>
-   
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
