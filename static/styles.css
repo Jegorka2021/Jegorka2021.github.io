@@ -1,67 +1,96 @@
 /* Шрифты */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@700&display=swap');
 
+/* Modern Design System */
+:root {
+  --primary: #05b741;
+  --primary-dark: #038f2e;
+  --secondary: #0d6efd;
+  --text-dark: #222;
+  --text-light: #fff;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+}
+
+/* Base Styles */
 body {
   font-family: 'Fredoka', serif;
   background-color: #fff;
-  color: #222;
-  transition: background-color 0.3s, color 0.3s;
+  color: var(--text-dark);
+  transition: var(--transition);
+  overflow-x: hidden;
 }
 
 /* Тёмная тема */
-body.dark-theme {
+/* body.dark-theme {
   background-color: #111;
   color: #eee;
-}
+} */
 
 /* Навигация */
 #mainNav {
-  background-color: rgba(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
   color: #000;
   /* border-radius: 60px; */
 }
 
-body.dark-theme #mainNav {
+/* body.dark-theme #mainNav {
   background-color: #000000;
   color: #fff;
 }
 
 body.dark-theme #mainNav a {
   color: #fff;
+} */
+
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
 .navbar-brand img {
+  transition: var(--transition);
   width: 120px;
   height: auto;
-  border-radius: 30px;
+  border-radius: var(--radius-md);
   box-sizing: border-box;
-  
 }
 
 .navbar-nav .nav-link {
-  font-family: 'Fredoka', sans-serif;
-  font-size: 1.6rem;
-  padding: 30px;
   font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: all 0.3s ease-in-out;
-  box-sizing: border-box;
-  
+  position: relative;
+  padding: 0.5rem 1rem;
 }
 
-.navbar-nav .nav-link:hover {
-  color: #0d6efd;
-  transform: scale(1.08);
-  text-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+.navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: var(--transition);
+  transform: translateX(-50%);
 }
 
-.navbar .bi {
+.navbar-nav .nav-link:hover::after {
+  width: 80%;
+}
+
+/* .navbar .bi {
   color: #fd0d0d;
   margin-right: 6px;
   transition: color 0.3s;
-}
+} */
 
 .navbar .nav-link:hover .bi {
   color: #198754;
@@ -74,24 +103,31 @@ body.dark-theme #mainNav a {
 
 /* Блок с видео */
 .bgvideo {
-  height: 75vh;
+  height: 85vh;
   width: 100%;
   position: relative;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  overflow: hidden;
   /* border-radius: 60px; */
 }
 
 .bgvideo video {
-  height: 75vh;
+  height: 85vh;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
   object-fit: cover;
   z-index: 1;
+  transform: scale(1.1);
+  transition: transform 0.5s ease;
   /* border-radius: 60px; */
+}
+
+.bgvideo:hover video {
+  transform: scale(1);
 }
 
 .bgvideo .overlay {
@@ -100,27 +136,30 @@ body.dark-theme #mainNav a {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(255, 255, 255);
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+  backdrop-filter: blur(5px);
   z-index: 2;
   /* border-radius: 60px; */
 }
 
 .vidtext {
+  font-size: clamp(10px, 5vw, 50px) !important;
   position: relative;
   z-index: 2;
-  margin-bottom: 40vh;
-  padding: 50px;
+  margin-bottom: 30vh;
+  padding: 2rem;
   max-width: 90%;
+
 }
 
 .vidtext h1 {
   font-family: 'Fredoka', serif;
-  color: rgb(5, 183, 65);
-  font-size: clamp(50px, 8vw, 100px);
-  text-shadow: 1px 1px 0 #444,
-               2px 2px 0 #666,
-               3px 3px 0 #888,
-               4px 4px 0 #aaa;
+  color: var(--primary);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  line-height: 1.1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 1s ease;
 }
 
 /* Форма выбора поездки */
@@ -132,45 +171,53 @@ body.dark-theme #mainNav a {
   gap: 15px;
   max-width: 600px;
   width: 90%;
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 50px;
-  box-shadow: 0 8px 20px rgb(5 183 65 / 0.4);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
   align-items: center;
   flex-wrap: wrap;
+  padding: 2rem;
+  transform: translateY(0);
+  transition: var(--transition);
+}
+
+.Form:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg), 0 10px 30px rgba(5, 183, 65, 0.2);
 }
 
 .trip-select {
   flex-grow: 1;
-  font-size: 1.5rem;
-  border: 2px solid #05b741;
-  border-radius: 50px;
-  padding-left: 20px;
-  transition: border-color 0.3s ease;
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  transition: var(--transition);
   background-color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
 }
 
 .trip-select:focus {
-  border-color: #0d6efd;
-  outline: none;
-  box-shadow: 0 0 10px #0d6efd66;
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
 }
 
 .trip-btn {
   font-size: 1.5rem;
-  padding: 10px 30px;
-  border-radius: 50px;
-  background: #05b741;
+  padding: 1rem 2rem;
+  border-radius: var(--radius-md);
+  background: var(--primary);
   border: none;
-  transition: background-color 0.3s ease;
-  font-weight: 700;
+  transition: var(--transition);
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .trip-btn:hover {
-  background: #038f2e;
+  background: var(--primary-dark);
+  transform: translateY(-2px);
 }
-
-
 
 /* Блок с изображениями */
 .image-wrapper {
@@ -224,7 +271,7 @@ body.dark-theme #mainNav a {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.theme-toggle input:checked + label .toggle-ball {
+.theme-toggle input:checked+label .toggle-ball {
   transform: translateX(30px);
 }
 
@@ -233,6 +280,24 @@ body.dark-theme #mainNav a {
   height: 100%;
   display: flex;
   flex-direction: column;
+  border: none;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-img-top {
+  transition: var(--transition);
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
 }
 
 .card-body {
@@ -240,6 +305,13 @@ body.dark-theme #mainNav a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
 }
 
 /* Иконки футера */
@@ -262,8 +334,8 @@ footer .bi-whatsapp:hover {
 
 /* Карусель */
 .testimonial-section {
-  background: var(--bs-light);
-  color: var(--bs-dark);
+  background: linear-gradient(45deg, #f8f9fa, #ffffff);
+  padding: 4rem 0;
 }
 
 body.dark .testimonial-section {
@@ -276,17 +348,30 @@ body.dark .testimonial-section {
   line-height: 1.6;
 }
 
+.carousel-item {
+  min-height: 350px;
+  padding: 2rem;
+}
+
 .carousel-inner {
-  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
 }
 
 body.dark .carousel-inner {
   background-color: rgba(30, 30, 30, 0.9);
 }
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-size: 100% 100%;
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: var(--shadow-md);
 }
 
 /* Адаптация формы на мобильных */
@@ -300,7 +385,7 @@ body.dark .carousel-inner {
     align-items: stretch;
     gap: 10px;
     width: 90%;
-    padding: 20px;
+    padding: 1.5rem;
     border-radius: 20px;
   }
 
@@ -308,13 +393,37 @@ body.dark .carousel-inner {
   .trip-select {
     width: 90%;
   }
+
+  .vidtext {
+    margin-bottom: 20vh;
+    text-align: center;
+  }
+
+  .carousel-item {
+    min-height: 400px;
+  }
 }
 
 /* Видео-текст на планшетах */
 @media (max-width: 992px) {
   .vidtext {
+    font-size: clamp(10px, 5vw, 50px) !important;
     padding: 20px;
     margin-bottom: 25vh;
     text-align: center;
+
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
