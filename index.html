@@ -54,6 +54,10 @@
 
     .navbar-brand img {
       transition: var(--transition);
+      width: 120px;
+      height: auto;
+      border-radius: 30px;
+      box-sizing: border-box;
     }
 
     .navbar-brand:hover img {
@@ -225,9 +229,6 @@
       transform: translateY(-3px);
       opacity: 0.8;
     }
-    .carousel-item {
-  min-height: 350px; /* или нужный размер */
-}
   </style>
 </head>
 
@@ -246,7 +247,7 @@
   <header>
     <nav class="navbar navbar-expand-lg" id="mainNav">
       <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <a class="navbar-brand d-flex align-items-center" href="/">
           <img src="static/images/chat.png" alt="Czech it out logo" height="40"
             class="me-3" />
           <span>Czech it out</span>
@@ -258,7 +259,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav align-items-center">
             <li class="nav-item">
-              <a class="nav-link active" href="index.html">
+              <a class="nav-link active" href="/">
                 <i class="bi bi-house-door-fill me-2"></i>Home
               </a>
             </li>
@@ -289,7 +290,7 @@
       <div class="bgvideo" data-aos="fade-in">
         <video id="heroVideo" src="https://videos.pexels.com/video-files/6362617/6362617-uhd_2560_1440_25fps.mp4"
           autoplay muted playsinline loop preload="auto" type="video/mp4"></video>
-        <div class="overlay" style="background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0))"></div>
+        <!-- <div class="overlay" style="background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0))"></div> -->
         <div class="vidtext text-center">
           <h1 class="mb-4">Discover Czech Republic's Hidden Gems</h1>
           <p class="lead text-white mb-5" style="font-size: 1.5rem;">Private day trips from Prague tailored just for you
@@ -326,26 +327,28 @@
         </h2>
         <div class="row g-4">
           <!-- Card 1 -->
+
           <div class="col-lg-4 col-md-6" data-aos="fade-up">
             <div class="card h-100">
               <div class="position-relative">
-                <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/72/78/be.jpg"
+                <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/82/a7/7e.jpg"
                   class="card-img-top" alt="Karlštejn" style="height: 250px; object-fit: cover;" />
                 <div class="position-absolute top-0 end-0 m-3">
                   <span class="badge bg-primary px-3 py-2 rounded-pill">Most Popular</span>
                 </div>
               </div>
               <div class="card-body p-4">
-                <h5 class="card-title fw-bold mb-3">Karlštejn castle & Pilsen</h5>
-                <p class="card-text text-secondary mb-4">Enjoy a seamless day trip with a private guide and door-to-door
-                  service.</p>
+                <h5 class="card-title fw-bold mb-3">Český Krumlov: Private Day Trip from Prague</h5>
+                <p class="card-text text-secondary mb-4">Step into a fairytale on this private day trip to Český Krumlov
+                  – a UNESCO-listed medieval gem where history meets flavor</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <a href="prague-Karl.html" class="btn btn-primary">Book Now</a>
-                  <span class="fs-5 fw-bold text-primary">From $119.17</span>
+                  <span class="fs-5 fw-bold text-primary">From $146</span>
                 </div>
               </div>
             </div>
           </div>
+
 
           <!-- Card 2 -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
@@ -438,22 +441,22 @@
           </div>
 
           <!-- Card 6 -->
-          <div class="col-lg-4 col-md-6" data-aos="fade-up">
+           <div class="col-lg-4 col-md-6" data-aos="fade-up">
             <div class="card h-100">
               <div class="position-relative">
-                <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/82/a7/7e.jpg"
+                <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/72/78/be.jpg"
                   class="card-img-top" alt="Karlštejn" style="height: 250px; object-fit: cover;" />
                 <div class="position-absolute top-0 end-0 m-3">
                   <!-- <span class="badge bg-primary px-3 py-2 rounded-pill">Most Popular</span> -->
                 </div>
               </div>
               <div class="card-body p-4">
-                <h5 class="card-title fw-bold mb-3">Český Krumlov: Private Day Trip from Prague</h5>
-                <p class="card-text text-secondary mb-4">Step into a fairytale on this private day trip to Český Krumlov
-                  – a UNESCO-listed medieval gem where history meets flavor</p>
+                <h5 class="card-title fw-bold mb-3">Karlštejn castle & Pilsen</h5>
+                <p class="card-text text-secondary mb-4">Enjoy a seamless day trip with a private guide and door-to-door
+                  service.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <a href="prague-Karl.html" class="btn btn-primary">Book Now</a>
-                  <span class="fs-5 fw-bold text-primary">From $146</span>
+                  <span class="fs-5 fw-bold text-primary">From $119.17</span>
                 </div>
               </div>
             </div>
@@ -671,7 +674,7 @@
                       </div>
                       <div class="text-center text-md-start">
                         <h5 class="fw-bold mb-1">Larry from California</h5>
-                        <p class="text-secondary mb-2">Karlštejn castle & Pilsen</p>
+                        <p class="text-secondary mb-2">Konopiste Castle</p>
                         <div class="rating">
                           <i class="bi bi-star-fill text-warning"></i>
                           <i class="bi bi-star-fill text-warning"></i>
@@ -748,7 +751,7 @@
           </div>
           <div class="col-lg-4 col-md-6">
             <h5 class="fw-bold mb-4">Quick Links</h5>
-            <a href="index.html" class="text-light d-block mb-2 text-decoration-none">
+            <a href="/" class="text-light d-block mb-2 text-decoration-none">
               <i class="bi bi-chevron-right me-2"></i>Home
             </a>
             <a href="index2.html" class="text-light d-block text-decoration-none">
