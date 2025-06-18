@@ -8,11 +8,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="static/styles.css" />
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+
     <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #475569;
+            --accent-color: #f59e0b;
+            --text-color: #1e293b;
+            --background-color: #ffffff;
+            --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --transition: all 0.3s ease;
+        }
+
         .hero-section {
             height: 60vh;
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                url('https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/72/78/be.jpg');
+                url('https://www.hrad-karlstejn.cz/pamatky/karlstejn/fotogalerie/exteriery/img_2531.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -38,7 +55,7 @@
             color: white;
             text-align: center;
             padding: 10rem;
-            margin-top: 6rem;
+            margin-top: 2rem;
         }
 
         .hero-content h1 {
@@ -87,6 +104,17 @@
 
         .tour-card-body {
             padding: 2rem;
+        }
+
+        .carousel-inner {
+            height: 500px;
+        }
+
+        .carousel-inner img {
+            height: 100%;
+            width: auto;
+            margin: 0 auto;
+            object-fit: contain;
         }
 
         .tour-card-title {
@@ -184,28 +212,167 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .navbar {
+            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.9) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--text-color) !important;
+        }
+
+        .navbar-brand img {
+            transition: var(--transition);
+            width: 120px;
+            height: auto;
+            border-radius: 30px;
+            box-sizing: border-box;
+        }
+
+        .navbar-brand:hover img {
+            transform: scale(1.05);
+        }
+
+        .navbar-nav .nav-item {
+            margin: 0 5px;
+        }
+
+        .nav-link {
+            font-size: 1.1rem !important;
+            font-weight: 500 !important;
+            color: var(--text-color) !important;
+            padding: 0.7rem 1.2rem !important;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 12px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            transform: translateY(0);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            color: var(--primary-color) !important;
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        .nav-link i {
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover i {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: rgba(255, 255, 255, 0.95);
+                padding: 1rem;
+                border-radius: 1rem;
+                margin-top: 1rem;
+                box-shadow: var(--card-shadow);
+            }
+
+            .navbar-nav {
+                gap: 0.5rem;
+            }
+
+            .nav-link::before {
+                display: none;
+            }
+
+            .nav-link {
+                padding: 0.5rem 1rem !important;
+                border-radius: 8px;
+            }
+
+            .nav-link:hover {
+                background: rgba(37, 99, 235, 0.1);
+                transform: none;
+            }
+        }
+
+        .btn-book-now {
+            background: linear-gradient(135deg, var(--primary-color), #1d4ed8);
+            border: none;
+            padding: 0.7rem 1.5rem !important;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-book-now:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px -1px rgba(37, 99, 235, 0.3);
+            background: linear-gradient(135deg, #1d4ed8, var(--primary-color));
+        }
     </style>
 </head>
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg" id="mainNav">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="/">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
                 <img src="static/images/chat.png" alt="Czech it out logo" height="40" class="me-3" />
                 <span>Czech it out</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="bi bi-list fs-1"></i>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="/"><i class="bi bi-house"></i> Home</a>
+                        <a class="nav-link" href="index.html">
+                            <i class="bi bi-house-door-fill me-2"></i>Home
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#contact"><i class="bi bi-envelope"></i> Contact</a>
+                        <a class="nav-link" href="index.html#about">
+                            <i class="bi bi-info-circle-fill me-2"></i>About us
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">
+                            <i class="bi bi-envelope-fill me-2"></i>Contact
+                        </a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="#booking" class="btn btn-primary rounded-pill btn-book-now">
+                            <i class="bi bi-calendar-check me-2"></i>Book Now
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -215,46 +382,99 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-content">
-            <h1>Karlštejn Castle & Pilsen Tour</h1>
-            <p>Experience the magic of medieval Czech history and world-famous beer in one unforgettable day</p>
+            <h1>Karlštejn Castle Tour</h1>
+            <p>Step into the world of kings and legends on a private tour of Karlštejn Castle – a Gothic masterpiece
+                where Czech history and royal secrets come alive in one unforgettable day.</p>
         </div>
     </section>
 
     <!-- Tour Details Section -->
-    <section class="tour-section">
+    <section class="tour-section" id="booking">
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-8">
                     <div class="tour-card">
-                        <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/72/78/be.jpg"
-                            alt="Karlštejn Castle" />
+                        <div id="tourCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner rounded">
+                                <div class="carousel-item active">
+                                    <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/b6/5e/d0.jpg"
+                                        class="d-block w-100" alt="Karlštejn Castle" />
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/b6/55/d7.jpg"
+                                        class="d-block w-100" alt="Castle View" />
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/64/0b/a0.jpg"
+                                        class="d-block w-100" alt="Pilsen Brewery" />
+                                </div>
+
+                                <div class="carousel-item">
+                                    <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/90/c6/ce.jpg"
+                                        class="d-block w-100" alt="Pilsen Brewery" />
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/b6/55/fe.jpg"
+                                        class="d-block w-100" alt="Pilsen Brewery" />
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/9a/64/f0.jpg"
+                                        class="d-block w-100" alt="Pilsen Brewery" />
+                                </div>
+                            </div>
+
+                            <button class="carousel-control-prev" type="button" data-bs-target="#tourCarousel"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#tourCarousel"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
                         <div class="tour-card-body">
                             <h2 class="tour-card-title">Tour Highlights</h2>
                             <p class="tour-card-text">
-                                Embark on a journey through time as you explore the magnificent Karlštejn Castle, a
-                                14th-century Gothic
-                                masterpiece built by Charles IV. Marvel at the stunning architecture, royal chambers,
-                                and the famous
-                                Chapel of the Holy Cross. Then, visit the birthplace of Pilsner beer in Pilsen, where
-                                you'll tour the
-                                historic brewery and enjoy a refreshing tasting session.
+                                Escape Prague for a few hours on this guided private half-day trip to Karlštejn Castle,
+                                including admission to the exclusive "Imperial Residence of Charles IV Tour".
+
+                                Enjoy a scenic drive through the Bohemian Karst protected area, with its forests,
+                                cliffs, and charming villages. Arrive in the fairytale village of Karlštejn and take a
+                                short walk up to the majestic Gothic castle.
+
+                                With your private guide, explore the most historic part of the fortress and learn about
+                                Emperor Charles IV, the Holy Roman crown jewels, and the hidden symbolism of this
+                                medieval masterpiece.
+
+                                This comfortable, culture-rich experience combines nature, history, and authentic Czech
+                                countryside charm – all within just a few hours.
                             </p>
                             <div class="included-items">
                                 <div class="included-item">
                                     <i class="bi bi-clock"></i>
-                                    <span>8-hour guided tour</span>
+                                    <span>4-5 hours guided tour</span>
                                 </div>
                                 <div class="included-item">
-                                    <i class="bi bi-ticket"></i>
-                                    <span>Skip-the-line castle entry</span>
+                                    <i class="bi bi-basket"></i>
+                                    <span>Snacks</span>
                                 </div>
                                 <div class="included-item">
-                                    <i class="bi bi-cup-hot"></i>
-                                    <span>Beer tasting in Pilsen</span>
+                                    <i class="bi bi-egg-fried"></i>
+                                    <span>Lunch break <small class="text-muted">(meals not included)</small></span>
                                 </div>
                                 <div class="included-item">
                                     <i class="bi bi-car-front"></i>
                                     <span>Private transportation</span>
+                                </div>
+                                <div class="included-item">
+                                    <i class="bi bi-wind"></i>
+                                    <span>Air-conditioned vehicle</span>
+                                </div>
+                                <div class="included-item">
+                                    <i class="bi bi-wifi"></i>
+                                    <span>WiFi on board</span>
                                 </div>
                             </div>
                         </div>
@@ -262,15 +482,17 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="booking-form">
-                        <h3 class="mb-4">Book Your Tour</h3>
-                        <form>
+                        <form action="https://formspree.io/f/xeokjnko" method="POST">
+                            <h3 class="mb-4">Book Your Tour</h3>
+
                             <div class="mb-3">
                                 <label for="date" class="form-label">Select Date</label>
-                                <input type="date" class="form-control" id="date" required />
+                                <input type="date" class="form-control" id="date" name="date" required />
                             </div>
+
                             <div class="mb-3">
                                 <label for="guests" class="form-label">Number of Guests</label>
-                                <select class="form-control" id="guests" required>
+                                <select class="form-control" id="guests" name="guests" required>
                                     <option value="">Select number of guests</option>
                                     <option value="1">1 Guest</option>
                                     <option value="2">2 Guests</option>
@@ -280,14 +502,17 @@
                                     <option value="6">6 Guests</option>
                                 </select>
                             </div>
+
                             <div class="mb-4">
                                 <label for="name" class="form-label">Your Name</label>
-                                <input type="text" class="form-control" id="name" required />
+                                <input type="text" class="form-control" id="name" name="name" required />
                             </div>
+
                             <div class="mb-4">
                                 <label for="email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="email" required />
+                                <input type="email" class="form-control" id="email" name="email" required />
                             </div>
+
                             <div class="d-flex justify-content-between align-items-center mb-4">
                                 <span class="price-tag">From $119.17</span>
                                 <button type="submit" class="btn btn-book">Book Now</button>
@@ -301,48 +526,80 @@
 
     <!-- Footer -->
     <footer class="py-5 bg-dark text-light" id="contact">
-      <div class="container text-center">
-        <div class="row g-4">
-          <div class="col-lg-4 col-md-6">
-            <h5 class="fw-bold mb-4">Contact Us</h5>
-            <div class="mb-2">
-              <i class="bi bi-envelope-fill text-primary me-2"></i>
-              info@czechitout.com
+        <div class="container text-center">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold mb-4">Contact Us</h5>
+                    <div class="mb-2">
+                        <i class="bi bi-envelope-fill text-primary me-2"></i>
+                        info@czechitout.com
+                    </div>
+                    <div>
+                        <i class="bi bi-telephone-fill text-primary me-2"></i>
+                        +420 123 456 789
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold mb-4">Follow Us</h5>
+                    <a href="#" class="text-light fs-4 mx-2 text-decoration-none">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="#" class="text-light fs-4 mx-2 text-decoration-none">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="#" class="text-light fs-4 mx-2 text-decoration-none">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold mb-4">Quick Links</h5>
+                    <a href="index.html" class="text-light d-block mb-2 text-decoration-none">
+                        <i class="bi bi-chevron-right me-2"></i>Home
+                    </a>
+                    <a href="index.html#about" class="text-light d-block text-decoration-none">
+                        <i class="bi bi-chevron-right me-2"></i>About us
+                    </a>
+                </div>
             </div>
-            <div>
-              <i class="bi bi-telephone-fill text-primary me-2"></i>
-              +420 123 456 789
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <h5 class="fw-bold mb-4">Follow Us</h5>
-            <a href="#" class="text-light fs-4 mx-2 text-decoration-none">
-              <i class="bi bi-facebook"></i>
-            </a>
-            <a href="#" class="text-light fs-4 mx-2 text-decoration-none">
-              <i class="bi bi-instagram"></i>
-            </a>
-            <a href="#" class="text-light fs-4 mx-2 text-decoration-none">
-              <i class="bi bi-whatsapp"></i>
-            </a>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <h5 class="fw-bold mb-4">Quick Links</h5>
-            <a href="/" class="text-light d-block mb-2 text-decoration-none">
-              <i class="bi bi-chevron-right me-2"></i>Home
-            </a>
-            <a href="index2.html" class="text-light d-block text-decoration-none">
-              <i class="bi bi-chevron-right me-2"></i>Tours
-            </a>
-          </div>
+            <hr class="border-light my-4" />
+            <p class="mb-0">&copy; 2025 Czech it out. All rights reserved.</p>
         </div>
-        <hr class="border-light my-4" />
-        <p class="mb-0">&copy; 2025 Czech it out. All rights reserved.</p>
-      </div>
     </footer>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const carousel = document.querySelector('#tourCarousel');
+        const carouselInstance = new bootstrap.Carousel(carousel, {
+            interval: 2000,  // 2 секунды
+            ride: 'carousel'
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('.booking-form form');
+
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault(); // Останавливаем стандартную отправку
+
+                const formData = new FormData(form);
+
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    window.location.href = 'thank-you.html';
+                } else {
+                    alert('Oops! Something went wrong.');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
