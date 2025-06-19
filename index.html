@@ -247,7 +247,7 @@
   <header>
     <nav class="navbar navbar-expand-lg" id="mainNav">
       <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="/">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
           <img src="static/images/chat.png" alt="Czech it out logo" height="40" class="me-3" />
           <span>Czech it out</span>
         </a>
@@ -258,7 +258,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav align-items-center">
             <li class="nav-item">
-              <a class="nav-link active" href="/">
+              <a class="nav-link active" href="index.html">
                 <i class="bi bi-house-door-fill me-2"></i>Home
               </a>
             </li>
@@ -285,39 +285,36 @@
 
   <!-- Hero Video Section -->
   <main>
-    <section class="hero-section position-relative">
-      <div class="bgvideo" data-aos="fade-in">
-        <video id="heroVideo" src="https://videos.pexels.com/video-files/6362617/6362617-uhd_2560_1440_25fps.mp4"
-          autoplay muted playsinline loop preload="auto" type="video/mp4"></video>
-        <!-- <div class="overlay" style="background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0))"></div> -->
-        <div class="vidtext text-center">
-          <h1 class="mb-4">Discover Czech Republic's Hidden Gems</h1>
-          <p class="lead text-white mb-5" style="font-size: 1.5rem;">Private day trips from Prague tailored just for you
-          </p>
-        </div>
+  <section class="hero-section position-relative">
+    <div class="bgvideo">
+      <video id="heroVideo"
+        src="https://videos.pexels.com/video-files/6362617/6362617-uhd_2560_1440_25fps.mp4"
+        autoplay muted loop playsinline preload="auto"></video>
 
-        <!-- Trip Form -->
-        <div class="Form d-flex justify-content-center align-items-center p-4"
-          style="background: rgba(255, 255, 255, 0.01); backdrop-filter: blur(10px); border-radius: 16px; max-width: 600px; width: 90%; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);">
-          <form id="tripForm" class="d-flex w-100 gap-3" style="max-width: 545px;">
-            <select id="tripSelect" class="form-select form-select-lg trip-select fw-bold" name="trip"
-              style="border-radius: 12px; border: 2px solid #e2e8f0;" required>
-              <option value="" selected disabled>Where would you like to go?</option>
-              <option value="prague-karl-pilsen.html">Prague to Karlštejn castle & Pilsen </option>
-              <option value="prague-moravia.html">Prague to Moravia</option>
-              <option value="prague-dresden.html">Prague to Dresden</option>
-              <option value="prague-konopiste.html">Prague to Konopiště castle</option>
-              <option value="prague-krumlov.html">Prague to Český Krumlov </option>
-              <option value="prague-karl.html">Prague to Karlštejn Castle</option>
-              <option value="prague-dresden.html">Prague to Dresden</option>
-            </select>
-            <button type="submit" class="btn btn-primary btn-lg trip-btn" style="min-width: 80px;">
-              <i class="bi bi-search me-2"></i>Search
-            </button>
-          </form>
-        </div>
+      <!-- Контент поверх видео -->
+      <div class="video-overlay d-flex flex-column justify-content-center align-items-center text-center text-white">
+        <h1 class="mb-3">Discover Czech Republic's Hidden Gems</h1>
+        <p class="lead mb-4">Private day trips from Prague tailored just for you</p>
+
+        <!-- Форма под текстом -->
+        <form id="tripForm" class="trip-form d-flex flex-wrap justify-content-center align-items-center gap-2">
+          <select id="tripSelect" class="form-select trip-select" name="trip" required>
+            <option value="" selected disabled>Where would you like to go?</option>
+            <option value="prague-karl-pilsen.html">Prague to Karlštejn & Pilsen</option>
+            <option value="prague-moravia.html">Prague to Moravia</option>
+            <option value="prague-dresden.html">Prague to Dresden</option>
+            <option value="prague-konopiste.html">Prague to Konopiště</option>
+            <option value="prague-krumlov.html">Prague to Český Krumlov</option>
+            <option value="prague-karl.html">Prague to Karlštejn Castle</option>
+            <option value="prague-kutna.html">Prague to Kutna Hora</option>
+          </select>
+          <button type="submit" class="btn btn-primary trip-btn">
+            <i class="bi bi-search me-1"></i>Search
+          </button>
+        </form>
       </div>
-    </section>
+    </div>
+  </section>
 
     <!-- Cards Section -->
     <section class="container-fluid py-5" style="background: #f8fafc;">
@@ -342,7 +339,7 @@
                   – a UNESCO-listed medieval gem where history meets flavor</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <a href="prague-krumlov.html" class="btn btn-primary">Book Now</a>
-                  <span class="fs-5 fw-bold text-primary">From $146</span>
+                  <span class="fs-5 fw-bold text-primary">From 228 €</span>
                 </div>
               </div>
             </div>
@@ -366,7 +363,7 @@
                   tasting.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <a href="prague-moravia.html" class="btn btn-primary">Book Now</a>
-                  <span class="fs-5 fw-bold text-primary">From $205.24</span>
+                  <span class="fs-5 fw-bold text-primary">From 268 €</span>
                 </div>
               </div>
             </div>
@@ -388,7 +385,7 @@
                   one day.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <a href="prague-dresden.html" class="btn btn-primary">Book Now</a>
-                  <span class="fs-5 fw-bold text-primary">From $145.66</span>
+                  <span class="fs-5 fw-bold text-primary">From 228 €</span>
                 </div>
               </div>
             </div>
@@ -411,7 +408,7 @@
                   Republic</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <a href="prague-konopiste.html" class="btn btn-primary">Book Now</a>
-                  <span class="fs-5 fw-bold text-primary">From $117</span>
+                  <span class="fs-5 fw-bold text-primary">From 158 €</span>
                 </div>
               </div>
             </div>
@@ -433,7 +430,7 @@
                   Hora, a UNESCO World Heritage Site bursting with history, mystery, and jaw-dropping architecture.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <a href="prague-kutna.html" class="btn btn-primary">Book Now</a>
-                  <span class="fs-5 fw-bold text-primary">From $295</span>
+                  <span class="fs-5 fw-bold text-primary">From 254 €</span>
                 </div>
               </div>
             </div>
@@ -455,7 +452,7 @@
                   service.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <a href="prague-karl-pilsen.html" class="btn btn-primary">Book Now</a>
-                  <span class="fs-5 fw-bold text-primary">From $119.17</span>
+                  <span class="fs-5 fw-bold text-primary">From 185 €</span>
                 </div>
               </div>
             </div>
@@ -478,7 +475,7 @@
                   Tour".</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <a href="prague-karl.html" class="btn btn-primary">Book Now</a>
-                  <span class="fs-5 fw-bold text-primary">From $103</span>
+                  <span class="fs-5 fw-bold text-primary">From 138 €</span>
                 </div>
               </div>
             </div>
@@ -796,7 +793,7 @@
           </div>
           <div class="col-lg-4 col-md-6">
             <h5 class="fw-bold mb-4">Quick Links</h5>
-            <a href="/" class="text-light d-block mb-2 text-decoration-none">
+            <a href="index.html" class="text-light d-block mb-2 text-decoration-none">
               <i class="bi bi-chevron-right me-2"></i>Home
             </a>
             <a href="index.html#about" class="text-light d-block text-decoration-none">
