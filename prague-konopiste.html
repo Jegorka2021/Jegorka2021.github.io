@@ -113,10 +113,10 @@
 
         .carousel-inner img {
             height: 100%;
-            width: auto;
-            margin: 0 auto;
-            object-fit: contain;
+            width: 100%;
+            object-fit: cover;
         }
+        
 
         .tour-card-title {
             font-size: 1.5rem;
@@ -331,6 +331,14 @@
             .nav-link:hover {
                 background: rgba(37, 99, 235, 0.1);
                 transform: none;
+            }
+
+            .carousel-inner {
+                height: 250px;
+            }
+
+            .carousel-inner img {
+                object-fit: cover;
             }
         }
 
