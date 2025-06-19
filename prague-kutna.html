@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
+    <title>Kutná Hora Tour</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Karlštejn Castle & Pilsen Tour</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="static/styles.css" />
@@ -58,7 +58,7 @@
             z-index: 2;
             color: white;
             text-align: center;
-            padding: 10rem;
+            padding: clamp(2rem, 8vw, 10rem);
             margin-top: 2rem;
         }
 
@@ -206,6 +206,17 @@
         @media (max-width: 768px) {
             .hero-section {
                 height: 50vh;
+            }
+            .hero-content {
+                padding: 2rem 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
             }
 
             .booking-form {
