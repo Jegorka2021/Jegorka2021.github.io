@@ -103,123 +103,98 @@ body.dark-theme #mainNav a {
 
 /* Блок с видео */
 .bgvideo {
-  height: 85vh;
-  width: 100%;
   position: relative;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  width: 100%;
+  height: 80vh;
   overflow: hidden;
-  /* border-radius: 60px; */
 }
 
 .bgvideo video {
-  height: 85vh;
-  width: 100%;
   position: absolute;
-  top: 0;
-  left: 0;
-  object-fit: cover;
-  z-index: 1;
-  transform: scale(1.1);
-  transition: transform 0.5s ease;
-  /* border-radius: 60px; */
-}
-
-.bgvideo:hover video {
-  transform: scale(1);
-}
-
-.bgvideo .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
-  backdrop-filter: blur(5px);
-  z-index: 2;
-  /* border-radius: 60px; */
+  object-fit: cover;
+  z-index: 1;
 }
 
-.vidtext {
-  font-size: clamp(10px, 5vw, 50px) !important;
+.video-overlay {
   position: relative;
   z-index: 2;
-  margin-bottom: 30vh;
-  padding: 2rem;
-  max-width: 90%;
-
+  padding: 3rem 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  height: 100%;
 }
 
-.vidtext h1 {
-  font-family: 'Fredoka', serif;
-  color: var(--primary);
-  /* font-size: clamp(3rem, 8vw, 6rem) !important; */
-  font-weight: 800;
-  line-height: 1.1;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  animation: fadeInUp 1s ease;
+.video-overlay h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
 }
 
-/* Форма выбора поездки */
-.Form {
-  position: absolute;
-  margin-top: 100px;
-  z-index: 3;
-  display: flex;
-  gap: 15px;
-  max-width: 600px;
-  width: 90%;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 2rem;
-  transform: translateY(0);
-  transition: var(--transition);
+.video-overlay p {
+  font-size: 1.25rem;
 }
 
-.Form:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg), 0 10px 30px rgba(5, 183, 65, 0.2);
+.trip-form {
+  /* background: rgba(255, 255, 255, 0.651); */
+  padding: 1.5rem;
+  border-radius: 1rem;
+  max-width: 400px;
+  width: 100%;
+  margin-top: 1rem;
+  /* box-shadow: 0 10px 20px rgba(0,0,0,0.15); */
 }
 
 .trip-select {
-  flex-grow: 1;
-  border: 2px solid var(--primary);
-  border-radius: var(--radius-md);
-  padding: 1rem 1.5rem;
-  font-size: 1.1rem;
-  transition: var(--transition);
-  background-color: rgba(255, 255, 255, 0.7);
-  cursor: pointer;
+  font-weight: bold;
+  flex: 1 1 auto;
+  min-width: 200px;
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid #ccc;
 }
 
-.trip-select:focus {
-  border-color: var(--secondary);
-  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
-}
 
 .trip-btn {
+  padding: 0.6rem 1.2rem;
   font-size: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-md);
-  background: var(--primary);
-  border: none;
-  transition: var(--transition);
   font-weight: 600;
-  letter-spacing: 0.5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-radius: 0.5rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
 }
 
 .trip-btn:hover {
-  background: var(--primary-dark);
-  transform: translateY(-2px);
+  background-color: #1d4ed8;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .video-overlay h1 {
+    font-size: 1.8rem;
+  }
+
+  .video-overlay p {
+    font-size: 1rem;
+  }
+
+  .trip-form {
+    padding: 1rem;
+  }
+
+  .trip-select,
+  .trip-btn {
+    width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .trip-form {
+    flex-direction: column;
+  }
 }
 
 /* Блок с изображениями */
@@ -380,32 +355,27 @@ body.dark .carousel-inner {
 /* Адаптация формы на мобильных */
 @media (max-width: 768px) {
   .Form {
-    position: absolute;
-    left: 20px;
-    bottom: 30px;
-    margin-bottom: 20px;
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
-    width: 90%;
-    padding: 1.5rem;
-    border-radius: 20px;
+    padding: 1.2rem;
+    margin-top: 1rem;
+    width: 95%;
+  }
+
+  .trip-select,
+  .trip-btn {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
   }
 
   .trip-btn {
-    width: 100%;
-    height: 31px;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
-    border-radius: 8px;
+    height: auto;
   }
-
-  .trip-select {
-    width: 100%;
-    height: 31px;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
-  }
+  #tripForm {
+    flex-direction: column;
+    gap: 10px;
 
   .vidtext {
     margin-bottom: 20vh;
@@ -415,10 +385,10 @@ body.dark .carousel-inner {
   .carousel-item {
     min-height: 400px;
   }
-}
+}}
 
 /* Скрытие кнопки на очень маленьких экранах */
-@media (max-width: 493px) {
+/* @media (max-width: 493px) {
   .trip-btn {
     display: none;
   }
@@ -428,11 +398,11 @@ body.dark .carousel-inner {
     display: none;
   }
 
-  .trip-select {
+  .trip-select { */
     /* width: 100%; */
-    display: none;
+    /* display: none;
   }
-}
+} */
 
 /* Видео-текст на планшетах */
 @media (max-width: 992px) {
