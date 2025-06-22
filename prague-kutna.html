@@ -206,6 +206,7 @@
             .hero-section {
                 height: 50vh;
             }
+
             .hero-content {
                 padding: 2rem 1rem;
             }
@@ -333,6 +334,7 @@
                 background: rgba(37, 99, 235, 0.1);
                 transform: none;
             }
+
             .carousel-inner {
                 height: 250px;
             }
@@ -356,6 +358,30 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 8px -1px rgba(37, 99, 235, 0.3);
             background: linear-gradient(135deg, #1d4ed8, var(--primary-color));
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+        }
+
+        /* 💡 Новые стили для цены */
+        .price-text {
+            font-size: 1.25rem;
+            /* увеличенный шрифт */
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        /* Можно добавить кастомный цвет бренда */
+        .price-highlight {
+            color: #e63946;
+            /* ярко-красный, можно заменить */
         }
     </style>
 </head>
@@ -507,7 +533,8 @@
 
                             <div class="mb-3">
                                 <label for="guests" class="form-label">Number of Guests</label>
-                                <select class="form-control" id="guests" name="guests" required>
+                                <select class="form-control" id="guests" name="guests" required
+                                    onchange="updatePrice()">
                                     <option value="">Select number of guests</option>
                                     <option value="1">1 Guest</option>
                                     <option value="2">2 Guests</option>
@@ -515,6 +542,8 @@
                                     <option value="4">4 Guests</option>
                                     <option value="5">5 Guests</option>
                                     <option value="6">6 Guests</option>
+                                    <option value="7">7 Guests</option>
+                                    <option value="8">8 Guests</option>
                                 </select>
                             </div>
 
@@ -524,19 +553,40 @@
                             </div>
 
                             <div class="mb-4">
+                                <label for="age" class="form-label">Your Age</label>
+                                <input type="number" class="form-control" id="age" name="age" min="0" required
+                                    onchange="updatePrice()" />
+                            </div>
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" id="disabled" name="disabled" />
+                                <label class="form-check-label" for="disabled">
+                                    Disabled person
+                                </label>
+                            </div>
+
+                            <div class="mb-4">
                                 <label for="email" class="form-label">Email Address</label>
                                 <input type="email" class="form-control" id="email" name="email" required />
                             </div>
 
-                            <div class="d-flex justify-content-between align-items-center mb-4">
-                                <span class="price-tag">From $119.17</span>
-                                <button type="submit" class="btn btn-book">Book Now</button>
+                            <div class="mb-4">
+                                <p id="price-per-person" class="fade-in price-text fs-5">Price per person: —</p>
+                                <p id="total-price" class="fade-in price-text price-highlight fs-4 fw-bold">Total price:
+                                    —</p>
                             </div>
-                        </form>
+
+                            <!-- Hidden field to send total price -->
+                            <input type="hidden" id="totalPriceField" name="total_price" />
+
+                            <!-- <div class="d-flex justify-content-between align-items-center mb-4">
+                                <span class="price-tag">From 244€</span> -->
+                            <button type="submit" class="btn btn-book">Book Now</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
+        <!-- </div> -->
     </section>
 
     <!-- Footer -->
@@ -614,6 +664,49 @@
                 }
             });
         });
+    </script>
+    <script>
+        function fadeIn(element) {
+            element.classList.remove('show');
+            void element.offsetWidth; // Трюк для перезапуска анимации
+            element.classList.add('show');
+        }
+
+        function updatePrice() {
+            const number_of_guests = parseInt(document.getElementById("guests").value);
+            const age = parseInt(document.getElementById("age").value);
+            const pricePerPersonDisplay = document.getElementById("price-per-person");
+            const totalPriceDisplay = document.getElementById("total-price");
+            const totalPriceField = document.getElementById("totalPriceField");
+
+            let pricePerPerson = 0;
+
+            if (!isNaN(number_of_guests) && number_of_guests > 0 && !isNaN(age)) {
+                const isSenior = age >= 65;
+
+                if (number_of_guests <= 2) {
+                    pricePerPerson = isSenior ? 244 : 254;
+                } else if (number_of_guests >= 3 && number_of_guests <= 5) {
+                    pricePerPerson = isSenior ? 224 : 234;
+                } else if (number_of_guests >= 6 && number_of_guests <= 8) {
+                    pricePerPerson = isSenior ? 174 : 184;
+                }
+            }
+
+            if (pricePerPerson > 0 && number_of_guests > 0) {
+                const total = pricePerPerson * number_of_guests;
+                pricePerPersonDisplay.textContent = `Price per person: ${pricePerPerson}€`;
+                totalPriceDisplay.textContent = `Total price: ${total}€`;
+                totalPriceField.value = total;
+
+                fadeIn(pricePerPersonDisplay);
+                fadeIn(totalPriceDisplay);
+            } else {
+                pricePerPersonDisplay.textContent = "Price per person: —";
+                totalPriceDisplay.textContent = "Total price: —";
+                totalPriceField.value = "";
+            }
+        }
     </script>
 </body>
 
