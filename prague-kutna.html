@@ -546,23 +546,30 @@
                                     <option value="8">8 Guests</option>
                                 </select>
                             </div>
+                            <div class="mb-3">
+                                <label for="seniors" class="form-label">How many are 65 or older?</label>
+                                <select class="form-control" id="seniors" name="seniors" required>
+                                    <option value="">Select number of seniors</option>
+                                    <!-- Options will be populated dynamically via JS -->
+                                </select>
+                            </div>
 
                             <div class="mb-4">
                                 <label for="name" class="form-label">Your Name</label>
                                 <input type="text" class="form-control" id="name" name="name" required />
                             </div>
 
-                            <div class="mb-4">
+                            <!-- <div class="mb-4">
                                 <label for="age" class="form-label">Your Age</label>
                                 <input type="number" class="form-control" id="age" name="age" min="0" required
                                     onchange="updatePrice()" />
-                            </div>
-                            <div class="form-check mb-4">
+                            </div> -->
+                            <!-- <div class="form-check mb-4">
                                 <input class="form-check-input" type="checkbox" id="disabled" name="disabled" />
                                 <label class="form-check-label" for="disabled">
-                                    Disabled person
+                                    I am a person with disability
                                 </label>
-                            </div>
+                            </div> -->
 
                             <div class="mb-4">
                                 <label for="email" class="form-label">Email Address</label>
@@ -666,48 +673,63 @@
         });
     </script>
     <script>
-        function fadeIn(element) {
-            element.classList.remove('show');
-            void element.offsetWidth; // Трюк для перезапуска анимации
-            element.classList.add('show');
+    const guestsSelect = document.getElementById("guests");
+    const seniorsSelect = document.getElementById("seniors");
+
+    guestsSelect.addEventListener("change", () => {
+        const max = parseInt(guestsSelect.value);
+        seniorsSelect.innerHTML = '<option value="">Select number of seniors</option>';
+        for (let i = 0; i <= max; i++) {
+            seniorsSelect.innerHTML += `<option value="${i}">${i}</option>`;
+        }
+        updatePrice();
+    });
+
+    seniorsSelect.addEventListener("change", updatePrice);
+
+    function fadeIn(element) {
+        element.classList.remove('show');
+        void element.offsetWidth;
+        element.classList.add('show');
+    }
+
+    function updatePrice() {
+        const number_of_guests = parseInt(document.getElementById("guests").value);
+        const number_of_seniors = parseInt(document.getElementById("seniors").value);
+        const pricePerPersonDisplay = document.getElementById("price-per-person");
+        const totalPriceDisplay = document.getElementById("total-price");
+        const totalPriceField = document.getElementById("totalPriceField");
+
+        if (isNaN(number_of_guests) || isNaN(number_of_seniors) || number_of_seniors > number_of_guests) {
+            pricePerPersonDisplay.textContent = "Price per person: —";
+            totalPriceDisplay.textContent = "Total price: —";
+            totalPriceField.value = "";
+            return;
         }
 
-        function updatePrice() {
-            const number_of_guests = parseInt(document.getElementById("guests").value);
-            const age = parseInt(document.getElementById("age").value);
-            const pricePerPersonDisplay = document.getElementById("price-per-person");
-            const totalPriceDisplay = document.getElementById("total-price");
-            const totalPriceField = document.getElementById("totalPriceField");
+        const seniors = number_of_seniors;
+        const adults = number_of_guests - seniors;
 
-            let pricePerPerson = 0;
-
-            if (!isNaN(number_of_guests) && number_of_guests > 0 && !isNaN(age)) {
-                const isSenior = age >= 65;
-
-                if (number_of_guests <= 2) {
-                    pricePerPerson = isSenior ? 244 : 254;
-                } else if (number_of_guests >= 3 && number_of_guests <= 5) {
-                    pricePerPerson = isSenior ? 224 : 234;
-                } else if (number_of_guests >= 6 && number_of_guests <= 8) {
-                    pricePerPerson = isSenior ? 174 : 184;
-                }
-            }
-
-            if (pricePerPerson > 0 && number_of_guests > 0) {
-                const total = pricePerPerson * number_of_guests;
-                pricePerPersonDisplay.textContent = `Price per person: ${pricePerPerson}€`;
-                totalPriceDisplay.textContent = `Total price: ${total}€`;
-                totalPriceField.value = total;
-
-                fadeIn(pricePerPersonDisplay);
-                fadeIn(totalPriceDisplay);
-            } else {
-                pricePerPersonDisplay.textContent = "Price per person: —";
-                totalPriceDisplay.textContent = "Total price: —";
-                totalPriceField.value = "";
-            }
+        function getPricePerPerson(type, count) {
+            if (count >= 0 && count <= 2) return type === 'senior' ? 244 : 254;
+            if (count >= 3 && count <= 5) return type === 'senior' ? 224 : 234;
+            if (count >= 6 && count <= 8) return type === 'senior' ? 174 : 184;
+            return 0;
         }
-    </script>
+
+        const seniorPrice = getPricePerPerson('senior', number_of_guests);
+        const adultPrice = getPricePerPerson('adult', number_of_guests);
+
+        const total = (seniors * seniorPrice) + (adults * adultPrice);
+
+        pricePerPersonDisplay.textContent = `Price per person: ${adults > 0 && seniors > 0 ? adultPrice + "€ / " + seniorPrice + "€" : adultPrice || seniorPrice}€`;
+        totalPriceDisplay.textContent = `Total price: ${total}€`;
+        totalPriceField.value = total;
+
+        fadeIn(pricePerPersonDisplay);
+        fadeIn(totalPriceDisplay);
+    }
+</script>
 </body>
 
 </html>
