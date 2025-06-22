@@ -354,6 +354,29 @@
             box-shadow: 0 6px 8px -1px rgba(37, 99, 235, 0.3);
             background: linear-gradient(135deg, #1d4ed8, var(--primary-color));
         }
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+        }
+
+        /* 💡 Новые стили для цены */
+        .price-text {
+            font-size: 1.25rem;
+            /* увеличенный шрифт */
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        /* Можно добавить кастомный цвет бренда */
+        .price-highlight {
+            color: #e63946;
+            /* ярко-красный, можно заменить */
+        }
     </style>
 </head>
 
@@ -510,7 +533,8 @@
 
                             <div class="mb-3">
                                 <label for="guests" class="form-label">Number of Guests</label>
-                                <select class="form-control" id="guests" name="guests" required>
+                                <select class="form-control" id="guests" name="guests" required
+                                    onchange="updatePrice()">
                                     <option value="">Select number of guests</option>
                                     <option value="1">1 Guest</option>
                                     <option value="2">2 Guests</option>
@@ -518,6 +542,8 @@
                                     <option value="4">4 Guests</option>
                                     <option value="5">5 Guests</option>
                                     <option value="6">6 Guests</option>
+                                    <option value="7">7 Guests</option>
+                                    <option value="8">8 Guests</option>
                                 </select>
                             </div>
 
@@ -525,17 +551,25 @@
                                 <label for="name" class="form-label">Your Name</label>
                                 <input type="text" class="form-control" id="name" name="name" required />
                             </div>
+                            
 
                             <div class="mb-4">
                                 <label for="email" class="form-label">Email Address</label>
                                 <input type="email" class="form-control" id="email" name="email" required />
                             </div>
 
-                            <div class="d-flex justify-content-between align-items-center mb-4">
-                                <span class="price-tag">From $119.17</span>
+                            <div class="mb-4">
+                                <p id="price-per-person" class="fade-in price-text">Price per person: —</p>
+                                <p id="total-price" class="fade-in price-text price-highlight">Total price: —</p>
+                            </div>
+                            <!-- Скрытое поле для передачи полной цены -->
+                            <input type="hidden" id="totalPriceField" name="total_price" />
+
+                            <div class="d-flex justify-content-end mb-4">
                                 <button type="submit" class="btn btn-book">Book Now</button>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -554,7 +588,7 @@
                     </div>
                     <div>
                         <i class="bi bi-telephone-fill text-primary me-2"></i>
-                        +420 123 456 789
+                        +420 702 084 530
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -565,7 +599,7 @@
                     <a href="#" class="text-light fs-4 mx-2 text-decoration-none">
                         <i class="bi bi-instagram"></i>
                     </a>
-                    <a href="#" class="text-light fs-4 mx-2 text-decoration-none">
+                    <a href="https://wa.me/702084530" class="text-light fs-4 mx-2 text-decoration-none">
                         <i class="bi bi-whatsapp"></i>
                     </a>
                 </div>
@@ -617,6 +651,47 @@
                 }
             });
         });
+    </script>
+    <script>
+        function fadeIn(element) {
+            element.classList.remove('show');
+            // принудительный reflow
+            void element.offsetWidth;
+            element.classList.add('show');
+        }
+        function updatePrice() {
+            const number = parseInt(document.getElementById("guests").value);
+            const pricePerPersonDisplay = document.getElementById("price-per-person");
+            const totalPriceDisplay = document.getElementById("total-price");
+            const totalPriceField = document.getElementById("totalPriceField");
+            let pricePerPerson = 0;
+
+            switch (number) {
+                case 1: pricePerPerson = 268; break;
+                case 2: pricePerPerson = 138; break;
+                case 3: pricePerPerson = 96; break;
+                case 4: pricePerPerson = 92; break;
+                case 5: pricePerPerson = 76; break;
+                case 6: pricePerPerson = 65; break;
+                case 7: pricePerPerson = 62; break;
+                case 8: pricePerPerson = 57; break;
+                default: pricePerPerson = 0;
+            }
+
+            if (pricePerPerson && number) {
+                const total = pricePerPerson * number;
+                pricePerPersonDisplay.textContent = `Price per person: ${pricePerPerson}€`;
+                totalPriceDisplay.textContent = `Total price: ${total}€`;
+                totalPriceField.value = total; // Передаём в скрытое поле
+                // Анимация
+                fadeIn(pricePerPersonDisplay);
+                fadeIn(totalPriceDisplay);
+            } else {
+                pricePerPersonDisplay.textContent = `Price per person: —`;
+                totalPriceDisplay.textContent = `Total price: —`;
+                totalPriceField.value = "";
+            }
+        }
     </script>
 </body>
 
