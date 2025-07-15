@@ -526,7 +526,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="booking-form">
-                        <form action="https://formspree.io/f/xeokjnko" method="POST">
+                        <form action="https://formspree.io/f/mdkdoobd" method="POST">
                             <h3 class="mb-4">Book Your Tour</h3>
 
                             <div class="mb-3">
@@ -554,7 +554,11 @@
                                 <label for="name" class="form-label">Your Name</label>
                                 <input type="text" class="form-control" id="name" name="name" required />
                             </div>
-                            
+
+                            <div class="mb-4">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" required />
+                            </div>
 
                             <div class="mb-4">
                                 <label for="email" class="form-label">Email Address</label>
@@ -567,6 +571,7 @@
                             </div>
                             <!-- Скрытое поле для передачи полной цены -->
                             <input type="hidden" id="totalPriceField" name="total_price" />
+                            <input type="hidden" name="source" value="DRESDEN" />
 
                             <div class="d-flex justify-content-end mb-4">
                                 <button type="submit" class="btn btn-book">Book Now</button>
