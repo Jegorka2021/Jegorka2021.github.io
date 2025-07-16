@@ -34,6 +34,10 @@
   <script src="static/form.js" defer></script>
 
   <style>
+    body, html {
+      overflow-x: hidden;
+    }
+    
     :root {
       --primary-color: #2563eb;
       --secondary-color: #475569;
@@ -234,9 +238,10 @@
       /* чтобы скрыть лишнее, если что */
     }
     @media (max-width: 767px) {
-      .carousel-inner {
-        height: auto;
-        /* на мобилках высота подстраивается под контент */
+
+      .carousel-control-prev,
+      .carousel-control-next {
+        display: none;
       }
     }
 
