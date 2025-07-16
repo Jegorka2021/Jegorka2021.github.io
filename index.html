@@ -230,8 +230,9 @@
     } */
 
     .carousel-inner {
-
+      height: 400px;
       flex-direction: column;
+      justify-content: center;
       overflow: hidden;
     }
 
@@ -963,43 +964,7 @@
         });
       });
     </script>
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const carouselInner = document.querySelector('#testimonialCarousel .carousel-inner');
-        const carouselItems = carouselInner.querySelectorAll('.carousel-item');
-
-        function adjustHeight() {
-          const activeItem = carouselInner.querySelector('.carousel-item.active');
-          if (!activeItem) return;
-
-          const activeHeight = activeItem.offsetHeight;
-          carouselInner.style.height = activeHeight + 'px';
-        }
-
-        // На десктопах фиксируем высоту (например 320px), на мобилках динамически
-        function updateHeight() {
-          if (window.innerWidth <= 767) {
-            adjustHeight();
-          } else {
-            carouselInner.style.height = '320px';
-          }
-        }
-
-        // При загрузке страницы
-        updateHeight();
-
-        // При изменении размера окна
-        window.addEventListener('resize', updateHeight);
-
-        // При смене слайда
-        const carouselElement = document.getElementById('testimonialCarousel');
-        carouselElement.addEventListener('slid.bs.carousel', () => {
-          if (window.innerWidth <= 767) {
-            adjustHeight();
-          }
-        });
-      });
-    </script>
+   
 </body>
 
 </html>
