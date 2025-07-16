@@ -7,10 +7,20 @@
   <title>Czech it out</title>
 
   <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-  <link rel="manifest" href="site.webmanifest" />
+  <!-- Основной favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+
+  <!-- Apple и Android иконки -->
+  <link rel="apple-touch-icon" sizes="180x180" href="favicons/favicon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicons/favicon-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicons/favicon-512x512.png">
+
+  <!-- PWA манифест -->
+  <link rel="manifest" href="favicons/manifest.webmanifest">
+
+  <!-- Цвет адресной строки на Android -->
+  <meta name="theme-color" content="#000000">
 
   <!-- Styles -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -21,7 +31,7 @@
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" /> -->
   <link rel="stylesheet" href="static/styles.css" />
   <link rel="stylesheet" href="static/theme-toggle.css" />
-  <script src="form.js" defer></script>
+  <script src="static/form.js" defer></script>
 
   <style>
     :root {
@@ -205,12 +215,23 @@
 
     .testimonial-section {
       background: #f8fafc;
+
     }
 
-    .carousel-item img {
+    /* .carousel-item img {
       width: 80px !important;
       height: 80px !important;
       border: 3px solid var(--primary-color);
+    } */
+
+    .carousel-inner {
+      height: 400px;
+      /* выбери высоту по самому высокому отзыву */
+      /* display: flex; */
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+      /* чтобы скрыть лишнее, если что */
     }
 
     .blockquote p {
@@ -248,7 +269,7 @@
   <header>
     <nav class="navbar navbar-expand-lg" id="mainNav">
       <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="/">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
           <img src="static/images/chat.png" alt="Czech it out logo" height="40" class="me-3" />
           <span>Czech it out</span>
         </a>
@@ -259,7 +280,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav align-items-center">
             <li class="nav-item">
-              <a class="nav-link active" href="/">
+              <a class="nav-link active" href="index.html">
                 <i class="bi bi-house-door-fill me-2"></i>Home
               </a>
             </li>
@@ -286,36 +307,35 @@
 
   <!-- Hero Video Section -->
   <main>
-  <section class="hero-section position-relative">
-    <div class="bgvideo">
-      <video id="heroVideo"
-        src="https://videos.pexels.com/video-files/6362617/6362617-uhd_2560_1440_25fps.mp4"
-        autoplay muted loop playsinline preload="auto"></video>
+    <section class="hero-section position-relative">
+      <div class="bgvideo">
+        <video id="heroVideo" src="https://videos.pexels.com/video-files/6362617/6362617-uhd_2560_1440_25fps.mp4"
+          autoplay muted loop playsinline preload="auto"></video>
 
-      <!-- Контент поверх видео -->
-      <div class="video-overlay d-flex flex-column justify-content-center align-items-center text-center text-white">
-        <h1 class="mb-3">Discover Czech Republic's Hidden Gems</h1>
-        <p class="lead mb-4">Private day trips from Prague tailored just for you</p>
+        <!-- Контент поверх видео -->
+        <div class="video-overlay d-flex flex-column justify-content-center align-items-center text-center text-white">
+          <h1 class="mb-3">Discover Czech Republic's Hidden Gems</h1>
+          <p class="lead mb-4">Private day trips from Prague tailored just for you</p>
 
-        <!-- Форма под текстом -->
-        <form id="tripForm" class="trip-form d-flex flex-wrap justify-content-center align-items-center gap-2">
-          <select id="tripSelect" class="form-select trip-select" name="trip" required>
-            <option value="" selected disabled>Where would you like to go?</option>
-            <option value="prague-karl-pilsen.html">Prague to Karlštejn & Pilsen</option>
-            <option value="prague-moravia.html">Prague to Moravia</option>
-            <option value="prague-dresden.html">Prague to Dresden</option>
-            <option value="prague-konopiste.html">Prague to Konopiště</option>
-            <option value="prague-krumlov.html">Prague to Český Krumlov</option>
-            <option value="prague-karl.html">Prague to Karlštejn Castle</option>
-            <option value="prague-kutna.html">Prague to Kutna Hora</option>
-          </select>
-          <button type="submit" class="btn btn-primary trip-btn">
-            <i class="bi bi-search me-1"></i>Search
-          </button>
-        </form>
+          <!-- Форма под текстом -->
+          <form id="tripForm" class="trip-form d-flex flex-wrap justify-content-center align-items-center gap-2">
+            <select id="tripSelect" class="form-select trip-select" name="trip" required>
+              <option value="" selected disabled>Where would you like to go?</option>
+              <option value="prague-karl-pilsen.html">Prague to Karlštejn & Pilsen</option>
+              <option value="prague-moravia.html">Prague to Moravia</option>
+              <option value="prague-dresden.html">Prague to Dresden</option>
+              <option value="prague-konopiste.html">Prague to Konopiště</option>
+              <option value="prague-krumlov.html">Prague to Český Krumlov</option>
+              <option value="prague-karl.html">Prague to Karlštejn Castle</option>
+              <option value="prague-kutna.html">Prague to Kutna Hora</option>
+            </select>
+            <button type="submit" class="btn btn-primary trip-btn">
+              <i class="bi bi-search me-1"></i>Search
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
     <!-- Cards Section -->
     <section class="container-fluid py-5" style="background: #f8fafc;">
@@ -326,7 +346,7 @@
           <!-- Card 1 -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up">
-            <div class="card h-100">
+            <div class="card h-100 clickable-card" data-href="prague-krumlov.html" style="cursor: pointer;">
               <div class="position-relative">
                 <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/82/a7/7e.jpg"
                   class="card-img-top" alt="Karlštejn" style="height: 250px; object-fit: cover;" />
@@ -335,12 +355,15 @@
                 </div>
               </div>
               <div class="card-body p-4">
+
                 <h5 class="card-title fw-bold mb-3">Český Krumlov: Private Day Trip from Prague</h5>
-                <p class="card-text text-secondary mb-4">Step into a fairytale on this private day trip to Český Krumlov
-                  – a UNESCO-listed medieval gem where history meets flavor</p>
+                <p class="card-text text-secondary mb-4" style="text-align: justify;">Step into a fairytale on this
+                  private day trip to Český
+                  Krumlov
+                  – a UNESCO-listed medieval gem where history meets flavor.</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <a href="prague-krumlov.html" class="btn btn-primary">Book Now</a>
-                  <span class="fs-5 fw-bold text-primary">From 52 €/per</span>
+                  <a href="prague-krumlov.html#booking-form-krumlov" class="btn btn-primary book-now-btn">Book Now</a>
+                  <span class="fs-5 fw-bold text-primary">From 228 €/per</span>
                 </div>
               </div>
             </div>
@@ -349,7 +372,7 @@
 
           <!-- Card 2 -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="card h-100">
+            <div class="card h-100 clickable-card" data-href="prague-moravia.html" style="cursor: pointer;">
               <div class="position-relative">
                 <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/4f/75/03.jpg"
                   class="card-img-top" alt="Moravia" style="height: 250px; object-fit: cover;" />
@@ -359,20 +382,22 @@
                 </div>
               </div>
               <div class="card-body p-4">
+
                 <h5 class="card-title fw-bold mb-3">Taste of Moravia</h5>
                 <p class="card-text text-secondary mb-4">Explore Mikulov and Lednice with private transport and wine
                   tasting.</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <a href="prague-moravia.html" class="btn btn-primary">Book Now</a>
-                  <span class="fs-5 fw-bold text-primary">From 57 €/per</span>
+                  <a href="prague-moravia.html#booking-form-moravia" class="btn btn-primary">Book Now</a>
+                  <span class="fs-5 fw-bold text-primary">From 268 €/per</span>
                 </div>
+
               </div>
             </div>
           </div>
 
           <!-- Card 3 -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="card h-100">
+            <div class="card h-100 clickable-card" data-href="prague-dresden.html" style="cursor: pointer;">
               <div class="position-relative">
                 <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/85/e2/23.jpg"
                   class="card-img-top" alt="Dresden" style="height: 250px; object-fit: cover;" />
@@ -381,20 +406,22 @@
                 </div>
               </div>
               <div class="card-body p-4">
+
                 <h5 class="card-title fw-bold mb-3">Dresden & Bastei Bridge</h5>
                 <p class="card-text text-secondary mb-4">Visit Saxon Switzerland National Park and explore Dresden in
                   one day.</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <a href="prague-dresden.html" class="btn btn-primary">Book Now</a>
-                  <span class="fs-5 fw-bold text-primary">From 52 €/per</span>
+                  <a href="prague-dresden.html#booking-form-dresden" class="btn btn-primary">Book Now</a>
+                  <span class="fs-5 fw-bold text-primary">From 228 €/per</span>
                 </div>
+
               </div>
             </div>
           </div>
 
           <!-- Card 4 -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up">
-            <div class="card h-100">
+            <div class="card h-100 clickable-card" data-href="prague-konopiste.html" style="cursor: pointer;">
               <div class="position-relative">
                 <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/51/bf/64.jpg"
                   class="card-img-top" alt="Karlštejn" style="height: 250px; object-fit: cover;" />
@@ -404,12 +431,13 @@
               </div>
               <div class="card-body p-4">
                 <h5 class="card-title fw-bold mb-3">Private Tour to Konopiste Castle from Prague Admission Included</h5>
-                <p class="card-text text-secondary mb-4">Trip to Konopiště Castle is a fantastic way to step into
+                <p class="card-text text-secondary mb-4" style="text-align: justify;">Trip to Konopiště Castle is a
+                  fantastic way to step into
                   history, explore beautiful landscapes, and immerse yourself in the rich cultural heritage of the Czech
-                  Republic</p>
+                  Republic.</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <a href="prague-konopiste.html" class="btn btn-primary">Book Now</a>
-                  <span class="fs-5 fw-bold text-primary">From 47 €/per</span>
+                  <a href="prague-konopiste.html#booking-form-konopiste" class="btn btn-primary">Book Now</a>
+                  <span class="fs-5 fw-bold text-primary">From 158 €/per</span>
                 </div>
               </div>
             </div>
@@ -417,7 +445,7 @@
 
           <!-- Card 5 -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up">
-            <div class="card h-100">
+            <div class="card h-100 clickable-card" data-href="prague-kutna.html" style="cursor: pointer;">
               <div class="position-relative">
                 <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/b6/2b/4c.jpg"
                   class="card-img-top" alt="Karlštejn" style="height: 250px; object-fit: cover;" />
@@ -427,11 +455,12 @@
               </div>
               <div class="card-body p-4">
                 <h5 class="card-title fw-bold mb-3">Private Tour from Prague to Kutna Hora with Admission and Lunch</h5>
-                <p class="card-text text-secondary mb-4">Escape the crowds of Prague and step into the magic of Kutna
+                <p class="card-text text-secondary mb-4" style="text-align: justify;">Escape the crowds of Prague and
+                  step into the magic of Kutna
                   Hora, a UNESCO World Heritage Site bursting with history, mystery, and jaw-dropping architecture.</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <a href="prague-kutna.html" class="btn btn-primary">Book Now</a>
-                  <span class="fs-5 fw-bold text-primary">From 184 €/per</span>
+                  <a href="prague-kutna.html#booking-form-kutna" class="btn btn-primary">Book Now</a>
+                  <span class="fs-5 fw-bold text-primary">From 254 €/per</span>
                 </div>
               </div>
             </div>
@@ -439,7 +468,7 @@
 
           <!-- Card 6 -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up">
-            <div class="card h-100">
+            <div class="card h-100 clickable-card" data-href="prague-karl-pilsen.html" style="cursor: pointer;">
               <div class="position-relative">
                 <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/72/78/be.jpg"
                   class="card-img-top" alt="Karlštejn" style="height: 250px; object-fit: cover;" />
@@ -452,8 +481,8 @@
                 <p class="card-text text-secondary mb-4">Enjoy a seamless day trip with a private guide and door-to-door
                   service.</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <a href="prague-karl-pilsen.html" class="btn btn-primary">Book Now</a>
-                  <span class="fs-5 fw-bold text-primary">From 45 €/per</span>
+                  <a href="prague-karl-pilsen.html#booking-form-karl-pilsen" class="btn btn-primary">Book Now</a>
+                  <span class="fs-5 fw-bold text-primary">From 185 €/per</span>
                 </div>
               </div>
             </div>
@@ -461,7 +490,7 @@
 
           <!-- Card 7 -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up">
-            <div class="card h-100">
+            <div class="card h-100 clickable-card" data-href="prague-karl.html" style="cursor: pointer;">
               <div class="position-relative">
                 <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/b6/5e/d0.jpg"
                   class="card-img-top" alt="Karlštejn" style="height: 250px; object-fit: cover;" />
@@ -471,22 +500,53 @@
               </div>
               <div class="card-body p-4">
                 <h5 class="card-title fw-bold mb-3">Private Tour of Karlštejn Castle with Admission Ticket Included</h5>
-                <p class="card-text text-secondary mb-4">Escape Prague for a few hours on this guided private half-day
+                <p class="card-text text-secondary mb-4" style="text-align: justify;">Escape Prague for a few hours on
+                  this guided private half-day
                   trip to Karlštejn Castle, including admission to the exclusive "Imperial Residence of Charles IV
                   Tour".</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <a href="prague-karl.html" class="btn btn-primary">Book Now</a>
-                  <span class="fs-5 fw-bold text-primary">From 45 €/per</span>
+                  <a href="prague-karl.html#booking-form-karl" class="btn btn-primary">Book Now</a>
+                  <span class="fs-5 fw-bold text-primary">From 138 €/per</span>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- Card 8 -->
-<!--           <div class="col-lg-4 col-md-6" data-aos="fade-up">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up">
+            <div class="card h-100 clickable-card" data-href="prague-pilsen.html" style="cursor: pointer;">
+              <div class="position-relative">
+                <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/b6/62/d4.jpg"
+                  class="card-img-top" alt="Karlštejn" style="height: 250px; object-fit: cover;" />
+                <div class="position-absolute top-0 end-0 m-3">
+                  <!-- <span class="badge bg-primary px-3 py-2 rounded-pill">Most Popular</span> -->
+                </div>
+              </div>
+              <div class="card-body p-4">
+                <h5 class="card-title fw-bold mb-3">The Authentic Pilsen Experience: Private tour with Local Cuisine
+                </h5>
+                <div class="card-text text-secondary mb-4" style="text-align: justify;">
+                  <p>Set off on a memorable private journey from Prague to Pilsen, where rich history, vibrant culture,
+                    and legendary beer come together.</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <a href="prague-pilsen.html#booking-form-pilsen" class="btn btn-primary">Book Now</a>
+                  <span class="fs-5 fw-bold text-primary">From 45 €/per</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+          <!-- Card 9 -->
+          <!-- <div class="col-lg-4 col-md-6" data-aos="fade-up">
             <div class="card h-100">
               <div class="position-relative">
-                <img src="https://media.istockphoto.com/id/1859810236/photo/statue-of-archduke-charles-on-heldenplatz-square-vienna-austria.jpg?s=612x612&w=0&k=20&c=zSO1MaTY75tCUSQxxe89U3j2WtLURsTgVBbthFfvxNA="
+                <img
+                  src="https://media.istockphoto.com/id/1859810236/photo/statue-of-archduke-charles-on-heldenplatz-square-vienna-austria.jpg?s=612x612&w=0&k=20&c=zSO1MaTY75tCUSQxxe89U3j2WtLURsTgVBbthFfvxNA="
                   class="card-img-top" alt="Upcoming Tour"
                   style="height: 250px; object-fit: cover; filter: brightness(0.5);" />
                 <div class="position-absolute top-0 end-0 m-3">
@@ -505,11 +565,12 @@
             </div>
           </div> -->
 
-          <!-- Card 9 -->
-<!--           <div class="col-lg-4 col-md-6" data-aos="fade-up">
+          <!-- Card 10 -->
+          <!-- <div class="col-lg-4 col-md-6" data-aos="fade-up">
             <div class="card h-100">
               <div class="position-relative">
-                <img src="https://bunny-wp-pullzone-dwhp0ps1us.b-cdn.net/wp-content/uploads/2025/03/Chain-Bridge-and-Parliament-from-Buda-Castle-in-the-Blue-Hour-1229x1536.jpg"
+                <img
+                  src="https://bunny-wp-pullzone-dwhp0ps1us.b-cdn.net/wp-content/uploads/2025/03/Chain-Bridge-and-Parliament-from-Buda-Castle-in-the-Blue-Hour-1229x1536.jpg"
                   class="card-img-top" alt="Upcoming Tour"
                   style="height: 250px; object-fit: cover; filter: brightness(0.5);" />
                 <div class="position-absolute top-0 end-0 m-3">
@@ -526,9 +587,9 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
-      </div> -->
+      </div>
     </section>
 
     <!-- About Us Section -->
@@ -559,18 +620,21 @@
             <div class="ps-lg-5">
               <h6 class="text-primary fw-bold mb-3">ABOUT US</h6>
               <h2 class="fw-bold mb-4" style="font-size: 2.5rem;">Your Gateway to Authentic Czech Experiences</h2>
-              <p class="text-secondary mb-4 fs-5 fw-bold" >Hello travelers!
-                We are Filip and Juraj – longtime friends and the founders of Czech it out. After two years of leading
-                guided tours for a private company across Central Europe – and receiving over 200 five-star reviews – we
-                decided it was time to follow our dream and start our own business.
+              <div class="text-secondary mb-4 fs-5 fw-bold" style="text-align: justify;">
+                <p>Hello travelers! We are Filip and Juraj – longtime friends and the founders of Czech it out. After
+                  two
+                  years of leading guided tours for a private company across Central Europe – and receiving over 200
+                  five-star reviews – we decided it was time to follow our dream and start our own business.</p>
 
-                Czech it out offers private guided tours from Prague to some of the most beautiful historical and
-                cultural heritage sites in the Czech Republic and beyond.
+                <p>Czech it out offers private guided tours from Prague to some of the most beautiful historical and
+                  cultural heritage sites in the Czech Republic and beyond.</p>
 
-                We're passionate about sharing the rich stories, hidden gems, and unforgettable experiences of this
-                amazing region.
+                <p>We're passionate about sharing the rich stories, hidden gems, and unforgettable experiences of this
+                  amazing region.</p>
 
-                We can't wait to meet you and show you around this beautiful country. Let's Czech it out together!</p>
+                <p>We can't wait to meet you and show you around this beautiful country. Let's Czech it out together!
+                </p>
+              </div>
 
               <div class="row g-4 mb-4">
                 <div class="col-sm-6">
@@ -629,7 +693,8 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="testimonial-section py-5" style="background: linear-gradient(to bottom, #f8fafc, #ffffff);">
+    <section class="testimonial-section py-5"
+      style="background: linear-gradient(to bottom, #f8fafc, #ffffff);max-width: 800px; margin: 0 auto;">
       <div class="container">
         <div class="text-center mb-5">
           <h6 class="text-primary fw-bold mb-2">TESTIMONIALS</h6>
@@ -669,7 +734,8 @@
                         </div>
                       </div>
                     </div>
-                    <p class="mb-0 text-secondary fst-italic">"This was a great trip to a beautiful medieval town. Juri
+                    <p class="mb-0 text-secondary fst-italic" style="text-align: justify;">"This was a great trip to a
+                      beautiful medieval town. Juri
                       our tour guide was very nice and professional. I would recommend this tour as not only learn about
                       the town but you can take stunning pics on this tour. Thank you Juri."</p>
                   </div>
@@ -692,7 +758,8 @@
                       </div>
                       <div class="text-center text-md-start">
                         <h5 class="fw-bold mb-1">Patrick, USA</h5>
-                        <p class="text-secondary mb-2">Dresden & Bastei Bridge: Private Day Trip to Germany from Prague
+                        <p class="text-secondary mb-2" style="text-align: justify;">Dresden & Bastei Bridge: Private Day
+                          Trip to Germany from Prague
                         </p>
                         <div class="rating">
                           <i class="bi bi-star-fill text-warning"></i>
@@ -703,7 +770,8 @@
                         </div>
                       </div>
                     </div>
-                    <p class="mb-0 text-secondary fst-italic">"Filip did a great job of guiding us around both the
+                    <p class="mb-0 text-secondary fst-italic" style="text-align: justify;">"Filip did a great job of
+                      guiding us around both the
                       national park and Dresden. He had a good mix of historical and contemporary knowledge and was very
                       pleasant to spend the day with. He was very communicative before picking us up and gave us plenty
                       of time to ask questions or explore."</p>
@@ -737,7 +805,7 @@
                         </div>
                       </div>
                     </div>
-                    <p class="mb-0 text-secondary fst-italic">
+                    <p class="mb-0 text-secondary fst-italic" style="text-align: justify;">
                       "We had a great time touring the castle with George (Uri) . Great guide, great adventure. We
                       enjoyed that the castle was not overly crowded, as well as the lunch in the hunting lodge. The
                       armory and hunting weapon collection was totally amazing and very under rated. This castle is
@@ -773,7 +841,7 @@
                         </div>
                       </div>
                     </div>
-                    <p class="mb-0 text-secondary fst-italic">
+                    <p class="mb-0 text-secondary fst-italic" style="text-align: justify;">
                       "Juraj (Yoo-Ray) is a great guide. He picked me up promptly and provided snacks and refreshments
                       for the drive to Karlstejn castle. He provided a bit of background and then walked me to the intro
                       video showing in the castle. He is a very good and safe driver, which is good because we
@@ -782,6 +850,7 @@
                 </div>
               </div>
             </div>
+
             <!-- Navigation Arrows -->
             <div class="carousel-controls">
               <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
@@ -797,7 +866,7 @@
             </div>
 
             <!-- Indicators -->
-<!--             <div class="carousel-indicators position-relative mt-4" style="margin-bottom: 0;">
+            <!-- <div class="carousel-indicators position-relative mt-4" style="margin-bottom: 0;">
               <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active bg-primary"
                 aria-current="true" aria-label="Slide 1"></button>
               <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" class="bg-primary"
@@ -824,7 +893,7 @@
               <i class="bi bi-telephone-fill text-primary me-2"></i>
               +420 702 084 530 Juraj Martiník<br>
               <i class="bi bi-telephone-fill text-primary me-2"></i>
-              +421 909 234 864 Filip Marek
+              +420 702 084 531 Filip Marek
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
@@ -832,16 +901,17 @@
             <a href="#" class="text-light fs-4 mx-2 text-decoration-none">
               <i class="bi bi-facebook"></i>
             </a>
-            <a href="https://www.instagram.com/czechitout.official?utm_source=qr&igsh=eHFsNW1vdzVuZTh3" class="text-light fs-4 mx-2 text-decoration-none">
+            <a href="https://www.instagram.com/czechitout.official?utm_source=qr&igsh=eHFsNW1vdzVuZTh3"
+              class="text-light fs-4 mx-2 text-decoration-none">
               <i class="bi bi-instagram"></i>
             </a>
-            <a href="https://wa.me/702084530" class="text-light fs-4 mx-2 text-decoration-none">
+            <a href="https://wa.me/+420702084530" class="text-light fs-4 mx-2 text-decoration-none">
               <i class="bi bi-whatsapp"></i>
             </a>
           </div>
           <div class="col-lg-4 col-md-6">
             <h5 class="fw-bold mb-4">Quick Links</h5>
-            <a href="/" class="text-light d-block mb-2 text-decoration-none">
+            <a href="index.html" class="text-light d-block mb-2 text-decoration-none">
               <i class="bi bi-chevron-right me-2"></i>Home
             </a>
             <a href="index.html#about" class="text-light d-block text-decoration-none">
@@ -871,8 +941,20 @@
       });
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-<!--     <script src="static/theme-toggle.js" defer></script> -->
+    <!-- <script src="static/form.js" defer></script> -->
+
+    <!-- <script src="static/theme-toggle.js" defer></script> -->
+    <script>
+      document.querySelectorAll('.clickable-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+          // Если клик был по кнопке "Book Now", ничего не делаем
+          if (e.target.closest('.book-now-btn')) return;
+
+          // Иначе переходим по ссылке карточки
+          window.location.href = card.getAttribute('data-href');
+        });
+      });
+    </script>
 </body>
 
 </html>
