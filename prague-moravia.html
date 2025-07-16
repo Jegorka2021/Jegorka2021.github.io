@@ -10,10 +10,20 @@
     <link rel="stylesheet" href="static/styles.css" />
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-    <link rel="manifest" href="site.webmanifest" />
+    <!-- Основной favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+
+    <!-- Apple и Android иконки -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/favicon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicons/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="favicons/favicon-512x512.png">
+
+    <!-- PWA манифест -->
+    <link rel="manifest" href="favicons/manifest.webmanifest">
+
+    <!-- Цвет адресной строки на Android -->
+    <meta name="theme-color" content="#000000">
 
 
     <style>
@@ -203,6 +213,7 @@
             .hero-section {
                 height: 50vh;
             }
+
             .hero-content {
                 padding: 2rem 1rem;
             }
@@ -330,6 +341,7 @@
                 background: rgba(37, 99, 235, 0.1);
                 transform: none;
             }
+
             .carousel-inner {
                 height: 250px;
             }
@@ -354,6 +366,7 @@
             box-shadow: 0 6px 8px -1px rgba(37, 99, 235, 0.3);
             background: linear-gradient(135deg, #1d4ed8, var(--primary-color));
         }
+
         .fade-in {
             opacity: 0;
             transition: opacity 0.5s ease-in;
@@ -477,21 +490,31 @@
                         </div>
                         <div class="tour-card-body">
                             <h2 class="tour-card-title">Tour Highlights</h2>
-                            <p class="tour-card-text">
-                                Embark on an unforgettable journey through the heart of Southern Moravia with our
-                                exclusive private tour. Explore the picturesque towns of Mikulov and Lednice, each
-                                offering a unique blend of history, architecture, and natural beauty.
-                                Start your day in Mikulov, a charming town nestled at the foot of the Pálava Hills.
-                                Next, immerse yourself in the breathtaking beauty of Lednice, home to the magnificent
-                                Lednice Palace and its expansive gardens, a UNESCO World Heritage site.
-                                Finally, indulge your senses with a visit to the renowned Jaroslav Springer Winery. This
-                                family-owned estate offers an intimate wine tasting experience, where you’ll savor some
-                                of the finest local wines.
-                                This private tour is a perfect blend of culture, history, and exceptional wine, offering
-                                a personalized experience that you won’t forget. Join us for a day of exploration,
-                                discovery, and indulgence in the heart of Moravia!
-                                Book your tour today and let us guide you through the best of Southern Moravia!
-                            </p>
+                            <div class="tour-card-text" style="text-align: justify;">
+                                <p>Embark on an unforgettable journey through the heart of Southern Moravia with our
+                                    exclusive private tour. Explore the picturesque towns of Mikulov and Lednice, each
+                                    offering a unique blend of history, architecture, and natural beauty.</p>
+
+                                <p>Start your day in Mikulov, a charming town nestled at the foot of the Pálava Hills.
+                                </p>
+
+                                <p>Next, immerse yourself in the breathtaking beauty of Lednice, home to the magnificent
+                                    Lednice Palace and its expansive gardens, a UNESCO World Heritage site.</p>
+
+                                <p>Finally, indulge your senses with a visit to the renowned Jaroslav Springer Winery.
+                                    This
+                                    family-owned estate offers an intimate wine tasting experience, where you’ll savor
+                                    some
+                                    of the finest local wines.</p>
+
+                                <p>This private tour is a perfect blend of culture, history, and exceptional wine,
+                                    offering
+                                    a personalized experience that you won’t forget.</p>
+
+                                <p>Join us for a day of exploration, discovery, and indulgence in the heart of Moravia!
+                                    Book
+                                    your tour today and let us guide you through the best of Southern Moravia!</p>
+                            </div>
                             <div class="included-items">
                                 <div class="included-item">
                                     <i class="bi bi-clock"></i>
@@ -522,8 +545,8 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="booking-form">
-                        <form action="https://formspree.io/f/mqalkkvl" method="POST">
+                    <div class="booking-form" id="booking-form-moravia">
+                        <form action="https://formspree.io/f/xeokjnko" method="POST">
                             <h3 class="mb-4">Book Your Tour</h3>
 
                             <div class="mb-3">
@@ -551,11 +574,10 @@
                                 <label for="name" class="form-label">Your Name</label>
                                 <input type="text" class="form-control" id="name" name="name" required />
                             </div>
-                            
-                           <div class="mb-4">
-                                <label for="phone" class="form-label">Phone Number (with area code)</label>
-                                <input type="tel" class="form-control" id="phone" name="phone"
-                                    placeholder="+420 123 456 789" required />
+
+                            <div class="mb-4">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" required />
                             </div>
 
                             <div class="mb-4">
@@ -569,7 +591,7 @@
                             </div>
                             <!-- Скрытое поле для передачи полной цены -->
                             <input type="hidden" id="totalPriceField" name="total_price" />
-                            <input type="hidden" name="source" value="TASTE OF MORAVIA" />
+                            <input type="hidden" name="source" value="Taste of Moravia" />
 
                             <div class="d-flex justify-content-end mb-4">
                                 <button type="submit" class="btn btn-book">Book Now</button>
@@ -582,6 +604,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="py-5 bg-dark text-light" id="contact">
         <div class="container text-center">
             <div class="row g-4">
@@ -589,13 +612,11 @@
                     <h5 class="fw-bold mb-4">Contact Us</h5>
                     <div class="mb-2">
                         <i class="bi bi-envelope-fill text-primary me-2"></i>
-                        czechitoutofficial@gmail.com
+                        info@czechitout.com
                     </div>
                     <div>
                         <i class="bi bi-telephone-fill text-primary me-2"></i>
-              +420 702 084 530 Juraj Martiník<br>
-              <i class="bi bi-telephone-fill text-primary me-2"></i>
-              +421 909 234 864 Filip Marek
+                        +420 702 084 530
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -603,10 +624,10 @@
                     <a href="#" class="text-light fs-4 mx-2 text-decoration-none">
                         <i class="bi bi-facebook"></i>
                     </a>
-                    <a href="https://www.instagram.com/czechitout.official?utm_source=qr&igsh=eHFsNW1vdzVuZTh3" class="text-light fs-4 mx-2 text-decoration-none">
+                    <a href="#" class="text-light fs-4 mx-2 text-decoration-none">
                         <i class="bi bi-instagram"></i>
                     </a>
-                    <a href="https://wa.me/702084530" class="text-light fs-4 mx-2 text-decoration-none">
+                    <a href="https://wa.me/+420702084530" class="text-light fs-4 mx-2 text-decoration-none">
                         <i class="bi bi-whatsapp"></i>
                     </a>
                 </div>
