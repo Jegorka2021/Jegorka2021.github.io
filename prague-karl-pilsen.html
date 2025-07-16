@@ -12,10 +12,20 @@
     <!-- <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&display=swap" rel="stylesheet"> -->
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-    <link rel="manifest" href="site.webmanifest" />
+    <!-- Основной favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+
+    <!-- Apple и Android иконки -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/favicon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicons/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="favicons/favicon-512x512.png">
+
+    <!-- PWA манифест -->
+    <link rel="manifest" href="favicons/manifest.webmanifest">
+
+    <!-- Цвет адресной строки на Android -->
+    <meta name="theme-color" content="#000000">
 
 
 
@@ -206,6 +216,7 @@
             .hero-section {
                 height: 50vh;
             }
+
             .hero-content {
                 padding: 2rem 1rem;
             }
@@ -333,6 +344,7 @@
                 background: rgba(37, 99, 235, 0.1);
                 transform: none;
             }
+
             .carousel-inner {
                 height: 250px;
             }
@@ -357,6 +369,7 @@
             box-shadow: 0 6px 8px -1px rgba(37, 99, 235, 0.3);
             background: linear-gradient(135deg, #1d4ed8, var(--primary-color));
         }
+
         .fade-in {
             opacity: 0;
             transition: opacity 0.5s ease-in;
@@ -479,15 +492,32 @@
                         </div>
                         <div class="tour-card-body">
                             <h2 class="tour-card-title">Tour Highlights</h2>
-                            <p class="tour-card-text">
-                                Embark on a journey through time as you explore the magnificent Karlštejn Castle, a
-                                14th-century Gothic
-                                masterpiece built by Charles IV. Marvel at the stunning architecture, royal chambers,
-                                and the famous
-                                Chapel of the Holy Cross. Then, visit the birthplace of Pilsner beer in Pilsen, where
-                                you'll tour the
-                                historic brewery and enjoy a refreshing tasting session.
-                            </p>
+                            <div class="tour-card-text" style="text-align: justify;">
+                                <p>Enjoy a seamless and enriching journey with door-to-door service and the expertise of
+                                    a
+                                    personal professional guide, who will accompany you throughout your adventure,
+                                    ensuring
+                                    a stress-free and insightful experience.</p>
+
+                                <p>Your journey begins at the breathtaking UNESCO Karlštejn Castle, where you'll take in
+                                    stunning views of the charming village and surrounding nature.</p>
+
+                                <p>Next, travel comfortably to Pilsen, the birthplace of the world-famous Pilsner
+                                    Urquell
+                                    beer. Here, you'll taste fresh, unfiltered beer straight from the source—a must for
+                                    beer
+                                    enthusiasts.</p>
+
+                                <p>Explore Pilsen’s rich history through iconic landmarks like the majestic St.
+                                    Bartholomew’s Cathedral, located in the heart of the lively Namesti Republiky
+                                    square.
+                                </p>
+
+                                <p>Savor authentic Czech cuisine or treat yourself to award-winning pizza at one of the
+                                    country’s best pizzerias.</p>
+
+                                <p><strong>Book now and let us craft your dream getaway!</strong></p>
+                            </div>
                             <div class="included-items">
                                 <div class="included-item">
                                     <i class="bi bi-clock"></i>
@@ -526,8 +556,8 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="booking-form">
-                        <form action="https://formspree.io/f/mqalkkvl" method="POST">
+                    <div class="booking-form" id="booking-form-karl-pilsen">
+                        <form action="https://formspree.io/f/xeokjnko" method="POST">
                             <h3 class="mb-4">Book Your Tour</h3>
 
                             <div class="mb-3">
@@ -555,11 +585,10 @@
                                 <label for="name" class="form-label">Your Name</label>
                                 <input type="text" class="form-control" id="name" name="name" required />
                             </div>
-                            
+
                             <div class="mb-4">
-                                <label for="phone" class="form-label">Phone Number (with area code)</label>
-                                <input type="tel" class="form-control" id="phone" name="phone"
-                                    placeholder="+420 123 456 789" required />
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" required />
                             </div>
 
                             <div class="mb-4">
@@ -573,7 +602,7 @@
                             </div>
                             <!-- Скрытое поле для передачи полной цены -->
                             <input type="hidden" id="totalPriceField" name="total_price" />
-                            <input type="hidden" name="source" value="KARLSTEJN - PILSEN" />
+                            <input type="hidden" name="source" value="Karlstejn - Pilsen" />
 
                             <div class="d-flex justify-content-end mb-4">
                                 <button type="submit" class="btn btn-book">Book Now</button>
@@ -594,13 +623,11 @@
                     <h5 class="fw-bold mb-4">Contact Us</h5>
                     <div class="mb-2">
                         <i class="bi bi-envelope-fill text-primary me-2"></i>
-                        czechitoutofficial@gmail.com
+                        info@czechitout.com
                     </div>
                     <div>
                         <i class="bi bi-telephone-fill text-primary me-2"></i>
-              +420 702 084 530 Juraj Martiník<br>
-              <i class="bi bi-telephone-fill text-primary me-2"></i>
-              +421 909 234 864 Filip Marek
+                        +420 702 084 530
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -608,10 +635,10 @@
                     <a href="#" class="text-light fs-4 mx-2 text-decoration-none">
                         <i class="bi bi-facebook"></i>
                     </a>
-                    <a href="https://www.instagram.com/czechitout.official?utm_source=qr&igsh=eHFsNW1vdzVuZTh3" class="text-light fs-4 mx-2 text-decoration-none">
+                    <a href="#" class="text-light fs-4 mx-2 text-decoration-none">
                         <i class="bi bi-instagram"></i>
                     </a>
-                    <a href="https://wa.me/702084530" class="text-light fs-4 mx-2 text-decoration-none">
+                    <a href="https://wa.me/+420702084530" class="text-light fs-4 mx-2 text-decoration-none">
                         <i class="bi bi-whatsapp"></i>
                     </a>
                 </div>
