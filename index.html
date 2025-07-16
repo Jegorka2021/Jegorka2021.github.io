@@ -233,6 +233,12 @@
       overflow: hidden;
       /* чтобы скрыть лишнее, если что */
     }
+    @media (max-width: 767px) {
+      .carousel-inner {
+        height: auto;
+        /* на мобилках высота подстраивается под контент */
+      }
+    }
 
     .blockquote p {
       font-size: 1.25rem;
