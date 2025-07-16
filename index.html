@@ -34,10 +34,11 @@
   <script src="static/form.js" defer></script>
 
   <style>
-    body, html {
+    body,
+    html {
       overflow-x: hidden;
     }
-    
+
     :root {
       --primary-color: #2563eb;
       --secondary-color: #475569;
@@ -229,24 +230,28 @@
     } */
 
     .carousel-inner {
-      height: 400px;
+      margin-top: -80px;
+      height: 600px;
       /* выбери высоту по самому высокому отзыву */
       /* display: flex; */
       flex-direction: column;
-      justify-content: center;
+      /* justify-content: center; */
       overflow: hidden;
       /* чтобы скрыть лишнее, если что */
     }
+
     @media (max-width: 767px) {
 
       .carousel-control-prev,
       .carousel-control-next {
         display: none;
       }
-      .carousel-inner {
+
+      /* .carousel-inner {
         height: auto;
         justify-content: flex-start;
-    }}
+      } */
+    }
 
     .blockquote p {
       font-size: 1.25rem;
@@ -966,6 +971,43 @@
 
           // Иначе переходим по ссылке карточки
           window.location.href = card.getAttribute('data-href');
+        });
+      });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const carouselInner = document.querySelector('#testimonialCarousel .carousel-inner');
+        const carouselItems = carouselInner.querySelectorAll('.carousel-item');
+
+        function adjustHeight() {
+          const activeItem = carouselInner.querySelector('.carousel-item.active');
+          if (!activeItem) return;
+
+          const activeHeight = activeItem.offsetHeight;
+          carouselInner.style.height = activeHeight + 'px';
+        }
+
+        // На десктопах фиксируем высоту (например 320px), на мобилках динамически
+        function updateHeight() {
+          if (window.innerWidth <= 767) {
+            adjustHeight();
+          } else {
+            carouselInner.style.height = '320px';
+          }
+        }
+
+        // При загрузке страницы
+        updateHeight();
+
+        // При изменении размера окна
+        window.addEventListener('resize', updateHeight);
+
+        // При смене слайда
+        const carouselElement = document.getElementById('testimonialCarousel');
+        carouselElement.addEventListener('slid.bs.carousel', () => {
+          if (window.innerWidth <= 767) {
+            adjustHeight();
+          }
         });
       });
     </script>
